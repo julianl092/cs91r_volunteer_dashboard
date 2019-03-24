@@ -4,10 +4,38 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+<section class="hero is-info is-bold is-large">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+<section class="hero is-info is-bold is-fullheight">
+  <div class="hero-body">
+	<div class="container has-text-centered">
+    <h1 class="title">
+	    Login
+	  </h1>
+    <div class="container">
+      <div class="columns is-mobile">
+        <div class="column is-4 is-offset-4">
+      		<form method="post">
+      		  {% csrf_token %}
+            <div class="field has-addons">
+              <div class="control is-expanded">
+      		      {{ form.as_p }}
+              </div>
+            </div>
+      		  <button type="submit" class="button is-primary">Login</button>
+      		</form>
+        </div>
+      </div>
+    </div>
 {% endblock %}

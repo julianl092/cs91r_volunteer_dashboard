@@ -4,12 +4,25 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a> |
-  <a href="{% url 'signup' %}">signup</a>
-{% endif %}
+	{% if user.is_authenticated %}
+		Hi {{ user.username }}!
+		<p><a href="{% url 'logout' %}">logout</a></p>
+	{% else %}
+		<section class="hero is-info is-bold is-fullheight">
+			<div class="hero-body">
+			    <div class="container has-text-centered">
+            <h1 class="title">
+					  Volunteer Dashboard
+					</h1>
+					<br>
+					<h2 class="subtitle">
+						You are not logged in. <br>
+						<a href="{% url 'login' %}">login</a> |
+						<a href="{% url 'signup' %}">signup</a>
+					</h2>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+
 {% endblock %}
