@@ -61,6 +61,9 @@
           <h2 class="subtitle">
             Events page. View, add, and edit events.
           </h2>
+          {% for event in events %}
+            <a> {{event.name}} </a>
+          {% endfor %}
         </div>
       </div>
       <!-- Footer of home page. -->
