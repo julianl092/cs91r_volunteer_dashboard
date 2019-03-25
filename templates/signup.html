@@ -4,10 +4,42 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign up</button>
-</form>
+<section class="hero is-info is-bold is-large">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item is-size-3" href="{% url 'home' %}">
+            Volunteer Dashboard
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="hero is-info is-bold is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+        <div class="columns">
+          <div class="column is-4 is-offset-4">
+            <form method="post">
+              {% csrf_token %}
+              <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                  {{ form.as_p }}
+                </div>
+              </div>
+              <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                  <button type="submit" class="button is-primary">Sign up</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
