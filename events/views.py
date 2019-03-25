@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from .models import Event
+from .forms import EventForm
 
-# Create your views here.
+def index(request):
+	if request.method == "GET":
+		print("GET request")
+
+	elif request.method == "POST":
+		print("POST request")
