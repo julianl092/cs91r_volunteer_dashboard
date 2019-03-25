@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',       # register the users app
+    'events.apps.EventsConfig',
+    'volunteers.apps.VolunteersConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'public/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static") ]
 
 
 AUTH_USER_MODEL = 'users.CustomUser'        # djauth custom users

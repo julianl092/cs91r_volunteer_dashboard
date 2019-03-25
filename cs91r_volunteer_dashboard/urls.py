@@ -21,8 +21,8 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),     # home page
-    path('events/', TemplateView.as_view(template_name='events.html'), name='events'),   # events page
-    path('volunteers/', TemplateView.as_view(template_name='volunteers.html'), name='volunteers'),   # volunteers page    
+    path('events/', include('events.urls')),   # events app
+    path('volunteers/', include('volunteers.urls')),   # volunteers page    
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('users/', include('django.contrib.auth.urls')),
