@@ -1,7 +1,7 @@
 <!-- templates/events.html -->
 {% extends 'base.html' %}
 
-{% block title %}Events{% endblock %}
+{% block title %}Dashboard -- Events{% endblock %}
 
 {% block content %}
 	{% if user.is_authenticated %}
@@ -12,6 +12,8 @@
           <div class="container">
             <div class="navbar-brand">
               <a href="{% url 'home' %}" class="navbar-item is-size-3">
+                {% load static %}
+                <img src ="{% static 'images/icon.png' %}" alt="icon"/>
                 Volunteer Dashboard
               </a>
               <!-- Hamburger icon for mobile -->
@@ -59,11 +61,47 @@
             Hi {{ user.username }}!
           </h1>
           <h2 class="subtitle">
-            Events page. View, add, and edit events.
+            This is the events page. View, add, and edit events.
           </h2>
-          {% for event in events %}
-            <a> {{event.name}} </a>
-          {% endfor %}
+        </div>
+        <!-- Table to display events. -->
+        <div class="container has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <table class="table">
+              <!-- Column names at the top. -->
+              <thead>
+                <tr>
+                  <th> Name </th>
+                  <th> Description </th>
+                  <th> Location </th>
+                  <th> Date </th>
+                  <th> Volunteers </th>
+                </tr>
+              </thead>
+              <!-- Column names at the bottom. -->
+              <tfoot>
+                <tr>
+                  <th> Name </th>
+                  <th> Description </th>
+                  <th> Location </th>
+                  <th> Date </th>
+                  <th> Volunteers </th>
+                </tr>
+              </tfoot>
+              <!-- Events data. -->
+              <tbody>
+                {% for event in events %}
+                  <tr>
+                    <td><a> {{event.name}} </a></td>
+                    <td> {{event.description}} </td>
+                    <td> {{event.address}} </td>
+                    <td> {{event.time}} </td>
+                    <td> {{event.volunteers}} </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <!-- Footer of home page. -->

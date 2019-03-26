@@ -1,7 +1,7 @@
 <!-- templates/signup.html -->
 {% extends 'base.html' %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}Dashboard -- Sign Up{% endblock %}
 
 {% block content %}
 <section class="hero is-info is-bold is-large">
@@ -10,6 +10,8 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item is-size-3" href="{% url 'home' %}">
+            {% load static %}
+            <img src ="{% static 'images/icon.png' %}" alt="icon"/>
             Volunteer Dashboard
           </a>
         </div>

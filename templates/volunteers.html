@@ -1,7 +1,7 @@
 <!-- templates/volunteers.html -->
 {% extends 'base.html' %}
 
-{% block title %}Volunteers{% endblock %}
+{% block title %}Dashboard -- Volunteers{% endblock %}
 
 {% block content %}
 	{% if user.is_authenticated %}
@@ -12,6 +12,8 @@
           <div class="container">
             <div class="navbar-brand">
               <a href="{% url 'home' %}" class="navbar-item is-size-3">
+                {% load static %}
+                <img src ="{% static 'images/icon.png' %}" alt="icon"/>
                 Volunteer Dashboard
               </a>
               <!-- Hamburger icon for mobile -->
@@ -61,6 +63,58 @@
           <h2 class="subtitle">
             Volunteers page. View, add, and edit volunteers.
           </h2>
+          <!-- List volunteers. -->
+          {% for volunteer in volunteers %}
+            {{volunteer.name}}
+          {% endfor %}
+        </div>
+        <!-- Table to display events. -->
+        <div class="container has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <table class="table">
+              <!-- Column names at the top. -->
+              <thead>
+                <tr>
+                  <th> Name </th>
+                  <th> Address </th>
+                  <th> Birthday </th>
+                  <th> Gender </th>
+                  <th> Email </th>
+                  <th> Date Joined </th>
+                  <th> <abbr title="Total hours volunteered"> Hours </abbr> </th>
+                  <th> <abbr title="Number of events attended"> </abbr> # Events </th>
+                </tr>
+              </thead>
+              <!-- Column names at the bottom. -->
+              <tfoot>
+                <tr>
+                  <th> Name </th>
+                  <th> Address </th>
+                  <th> Birthday </th>
+                  <th> Gender </th>
+                  <th> Email </th>
+                  <th> Date Joined </th>
+                  <th> <abbr title="Total hours volunteered"> Hours </abbr> </th>
+                  <th> <abbr title="Number of events attended"> </abbr> # Events </th>
+                </tr>
+              </tfoot>
+              <!-- Events data. -->
+              <tbody>
+                {% for volunteer in volunteers %}
+                  <tr>
+                    <td><a> {{volunteer.name}} </a></td>
+                    <td> {{volunteer.address}} </td>
+                    <td> {{volunteer.birthday}} </td>
+                    <td> {{volunteer.gender}} </td>
+                    <td> {{volunteer.email}} </td>
+                    <td> {{volunteer.date_joined}} </td>
+                    <td> {{volunteer.num_hours}} </td>
+                    <td> {{volunteer.num_events}} </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <!-- Footer of home page. -->

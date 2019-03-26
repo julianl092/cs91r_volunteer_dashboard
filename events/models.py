@@ -9,7 +9,7 @@ class Event(models.Model):		# To store events
  	name = models.CharField(max_length=256)
  	description = models.TextField(default='')
  	address = models.CharField(max_length=256)
- 	time = models.DateTimeField(default=timezone.now()+timezone.timedelta(days=7))	# default a week from current
+ 	time = models.DateTimeField(default=timezone.now)	# default is today
  	volunteers = models.ManyToManyField(	# joins events and volunteers
  		'volunteers.Volunteer',
  		related_name='events_volunteers',
