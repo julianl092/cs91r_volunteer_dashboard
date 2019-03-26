@@ -4,7 +4,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-	{% if user.is_authenticated %}
+  {% if user.is_authenticated %}
     <!-- Navbar -->
     <section class="hero is-info is-bold is-large">
       <div class="hero-head">
@@ -92,7 +92,7 @@
 </style>
       <script>
           // 2. Use the margin convention practice 
-          var margin = {top: 50, right: 50, bottom: 50, left: 50}
+          var margin = {top: 100, right: 400, bottom: 100, left: 400}
             , width = window.innerWidth - margin.left - margin.right // Use the window's width 
             , height = window.innerHeight - margin.top - margin.bottom; // Use the window's height
           
