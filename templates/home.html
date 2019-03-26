@@ -1,7 +1,7 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Dashboard -- Home{% endblock %}
 
 {% block content %}
   {% if user.is_authenticated %}
@@ -12,6 +12,8 @@
           <div class="container">
             <div class="navbar-brand">
               <a href="{% url 'home' %}" class="navbar-item is-size-3">
+                {% load static %}
+                <img src ="{% static 'images/icon.png' %}" alt="icon"/>
                 Volunteer Dashboard
               </a>
               <!-- Hamburger icon for mobile -->
@@ -164,6 +166,8 @@
 			<div class="hero-body">
 			    <div class="container has-text-centered">
             <h1 class="title">
+            {% load static %}
+            <img src ="{% static 'images/icon.png' %}" alt="icon"/>
 					  Volunteer Dashboard
 					</h1>
 					<br>
