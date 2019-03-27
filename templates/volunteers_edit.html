@@ -1,7 +1,7 @@
-<!-- templates/volunteers.html -->
+<!-- templates/volunteers_edit.html -->
 {% extends 'base.html' %}
 
-{% block title %}Dashboard -- Volunteers{% endblock %}
+{% block title %}Dashboard -- Edit Volunteer{% endblock %}
 
 {% block content %}
 	{% if user.is_authenticated %}
@@ -57,70 +57,34 @@
     <section class="section">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title">
-            Hi {{ user.username }}!
-          </h1>
-          <h2 class="subtitle">
-            Volunteers page. View, add, and edit volunteers.
-          </h2>
-        </div>
-        <!-- Add new event -->
-        <div class="container has-text-centered">
-            <a href="{% url 'add_volunteer' %}">
-              <br>
-              <button class="button is-primary">
-                New volunteer
-              </button>
-            </a>
-        </div>
-        <!-- Table to display events. -->
-        <div class="container has-text-centered">
           <div class="column is-6 is-offset-3">
-            <table class="table">
-              <!-- Column names at the top. -->
-              <thead>
-                <tr>
-                  <th> Name </th>
-                  <th> Address </th>
-                  <th> Birthday </th>
-                  <th> Gender </th>
-                  <th> Email </th>
-                  <th> Date Joined </th>
-                  <th> <abbr title="Total hours volunteered"> # Hrs </abbr> </th>
-                  <th> <abbr title="Number of events attended"> </abbr> # Events </th>
-                </tr>
-              </thead>
-              <!-- Column names at the bottom. -->
-              <tfoot>
-                <tr>
-                  <th> Name </th>
-                  <th> Address </th>
-                  <th> Birthday </th>
-                  <th> Gender </th>
-                  <th> Email </th>
-                  <th> Date Joined </th>
-                  <th> <abbr title="Total hours volunteered"> # Hrs </abbr> </th>
-                  <th> <abbr title="Number of events attended"> </abbr> # Events </th>
-                </tr>
-              </tfoot>
-              <!-- Events data. -->
-              <tbody>
-                {% for volunteer in volunteers %}
-                  <tr>
-                    <td><a href="{% url 'edit_volunteer' %}?id={{volunteer.id}}"> {{volunteer.name}} </a></td>
-                    <td> {{volunteer.address}} </td>
-                    <td> {{volunteer.birthday}} </td>
-                    <td> {{volunteer.gender}} </td>
-                    <td> {{volunteer.email}} </td>
-                    <td> {{volunteer.date_joined}} </td>
-                    <td> {{volunteer.num_hours}} </td>
-                    <td> {{volunteer.num_events}} </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            <h1 class="title">
+              Hi {{ user.username }}!
+            </h1>
+            <h2 class="subtitle">
+              Edit a volunteer here. If you instead want to create a new volunteer, please go back to the volunteers overview and click on the new volunteer button.
+            </h2>
           </div>
         </div>
+        <form method="post">
+          {% csrf_token %}
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              {{ form.as_p }}
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <button type="submit" class="button is-primary">Edit volunteer</button>
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <input type="submit" value="Delete volunteer" class="button is-danger" name="delete">
+            </div>
+          </div>
+        </form>
+
       </div>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">
