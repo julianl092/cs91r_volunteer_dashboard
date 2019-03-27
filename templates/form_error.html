@@ -1,0 +1,22 @@
+<!-- templates/form_error.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard -- Form Error{% endblock %}
+
+{% block content %}
+
+  <section class="hero is-danger is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Error
+        </h1>
+        <h2 class="subtitle">
+          We encountered an error while trying to update the database.
+        </h2>
+        <a href="{url 'home'}"> Back to dashboard home. </a>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

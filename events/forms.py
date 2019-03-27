@@ -18,4 +18,5 @@ class EventForm(forms.ModelForm):
 			'address',
 			'time',
 			'volunteers',
+			'cost',
 		)

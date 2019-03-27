@@ -1,7 +1,7 @@
-<!-- templates/home.html -->
+<!-- templates/volunteers_add.html -->
 {% extends 'base.html' %}
 
-{% block title %}Dashboard -- Home{% endblock %}
+{% block title %}Dashboard -- Add Volunteer{% endblock %}
 
 {% block content %}
 	{% if user.is_authenticated %}
@@ -26,13 +26,13 @@
             <!-- Right side of navbar -->
             <div id="navbarMenuHeroA" class="navbar-menu">
               <div class="navbar-end">
-                <a class="navbar-item is-active" href="{% url 'home' %}">
+                <a class="navbar-item" href="{% url 'home' %}">
                   Home
                 </a>
                 <a class="navbar-item" href="{% url 'events' %}">
                   Events
                 </a>
-                <a class="navbar-item" href="{% url 'volunteers' %}">
+                <a class="navbar-item is-active" href="{% url 'volunteers' %}">
                   Volunteers
                 </a>
                 <span class="navbar-item">
@@ -51,7 +51,10 @@
           </div>
         </nav>
       </div>
-      <!-- Body of home page. -->
+    </section>
+
+    <!-- Body of home page. -->
+    <section class="section">
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="column is-6 is-offset-3">
@@ -59,13 +62,27 @@
               Hi {{ user.username }}!
             </h1>
             <h2 class="subtitle">
-              This page will display a variety of visualizations. For instance, there will be volunteer and budget cost projections based on demographics and geolocation.
+              Add a new volunteer here. If you instead want to edit data for a pre-existing volunteer, please go back to the volunteer overview and click on the name of the volunteer's data you would like to edit.
             </h2>
           </div>
         </div>
+        <form method="post">
+          {% csrf_token %}
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              {{ form.as_p }}
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <button type="submit" class="button is-primary">Add volunteer</button>
+            </div>
+          </div>
+        </form>
+
       </div>
       <!-- Footer of home page. -->
-      <div class="hero-foot has-text-centered">
+      <div class="hero-foot is-light has-text-centered">
         <a>
           March 2019 <br>
           Developed by Eric Lin, Julian Lee, and Isaac Robinson
@@ -76,10 +93,8 @@
 	{% else %}
 		<section class="hero is-info is-bold is-fullheight">
 			<div class="hero-body">
-			   <div class="container has-text-centered">
-          {% load static %}
-          <img src ="{% static 'images/icon.png' %}" alt="icon"/>
-          <h1 class="title">
+			    <div class="container has-text-centered">
+            <h1 class="title">
 					  Volunteer Dashboard
 					</h1>
 					<br>

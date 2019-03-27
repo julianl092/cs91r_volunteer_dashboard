@@ -15,6 +15,7 @@ class Event(models.Model):		# To store events
  		related_name='events_volunteers',
  		blank=True,
  	)
+ 	cost = models.IntegerField(default=1000)	# dollar cost of the event
 
  	def __str__(self):
  		return self.name

@@ -63,10 +63,15 @@
           <h2 class="subtitle">
             Volunteers page. View, add, and edit volunteers.
           </h2>
-          <!-- List volunteers. -->
-          {% for volunteer in volunteers %}
-            {{volunteer.name}}
-          {% endfor %}
+        </div>
+        <!-- Add new event -->
+        <div class="container has-text-centered">
+            <a href="{% url 'add_volunteer' %}">
+              <br>
+              <button class="button is-primary">
+                New volunteer
+              </button>
+            </a>
         </div>
         <!-- Table to display events. -->
         <div class="container has-text-centered">
@@ -81,7 +86,7 @@
                   <th> Gender </th>
                   <th> Email </th>
                   <th> Date Joined </th>
-                  <th> <abbr title="Total hours volunteered"> Hours </abbr> </th>
+                  <th> <abbr title="Total hours volunteered"> # Hrs </abbr> </th>
                   <th> <abbr title="Number of events attended"> </abbr> # Events </th>
                 </tr>
               </thead>
@@ -94,7 +99,7 @@
                   <th> Gender </th>
                   <th> Email </th>
                   <th> Date Joined </th>
-                  <th> <abbr title="Total hours volunteered"> Hours </abbr> </th>
+                  <th> <abbr title="Total hours volunteered"> # Hrs </abbr> </th>
                   <th> <abbr title="Number of events attended"> </abbr> # Events </th>
                 </tr>
               </tfoot>

@@ -64,6 +64,15 @@
             This is the events page. View, add, and edit events.
           </h2>
         </div>
+        <!-- Add new event -->
+        <div class="container has-text-centered">
+            <a href="{% url 'add_event' %}">
+              <br>
+              <button class="button is-primary">
+                New event
+              </button>
+            </a>
+        </div>
         <!-- Table to display events. -->
         <div class="container has-text-centered">
           <div class="column is-6 is-offset-3">
@@ -76,6 +85,7 @@
                   <th> Location </th>
                   <th> Date </th>
                   <th> Volunteers </th>
+                  <th> Cost </th>
                 </tr>
               </thead>
               <!-- Column names at the bottom. -->
@@ -86,6 +96,7 @@
                   <th> Location </th>
                   <th> Date </th>
                   <th> Volunteers </th>
+                  <th> Cost </th>
                 </tr>
               </tfoot>
               <!-- Events data. -->
@@ -96,7 +107,12 @@
                     <td> {{event.description}} </td>
                     <td> {{event.address}} </td>
                     <td> {{event.time}} </td>
-                    <td> {{event.volunteers}} </td>
+                    <td> 
+                      {% for v in event.volunteers %} 
+                        v.name,
+                      {% endfor %}
+                    </td>
+                    <td> {{event.cost}} </td>
                   </tr>
                 {% endfor %}
               </tbody>
