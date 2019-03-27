@@ -100,7 +100,8 @@ function ready(us) {
         return "https://image.flaticon.com/icons/svg/264/264735.svg";
       }
     })
-    .attr("transform", d => "translate(" + d.long + "," + d.lat + ")");
+    .attr("transform", d => "translate(" + d.long + "," + d.lat + ")")
+    .on("click", function(d){alert("Location: " + d.lat + "," + d.long)});
 }
 
 function clicked(d) {

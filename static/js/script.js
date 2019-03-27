@@ -1,4 +1,4 @@
-var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+var margin = { top: 10, right: 10, bottom: 10, left: 500 },
   width = window.innerWidth - margin.left - margin.right, // Use the window's width
   height = window.innerHeight - margin.top - margin.bottom; // Use the window's height
 
