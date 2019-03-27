@@ -59,6 +59,14 @@
       </div>
       <div class="hero-body">
         <div class="container has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <h1 class="title">
+              Hi {{ user.username }}!
+            </h1>
+            <h2 class="subtitle">
+              This page will display a variety of visualizations. For instance, there will be volunteer and budget cost projections based on demographics and geolocation.
+            </h2>
+          </div>
         </div>
       </div>
       <!-- Footer of home page. -->
@@ -78,10 +86,10 @@
 	{% else %}
 		<section class="hero is-info is-bold is-fullheight">
 			<div class="hero-body">
-			    <div class="container has-text-centered">
-            <h1 class="title">
-            {% load static %}
-            <img src ="{% static 'images/icon.png' %}" alt="icon"/>
+			   <div class="container has-text-centered">
+          {% load static %}
+          <img src ="{% static 'images/icon.png' %}" alt="icon"/>
+          <h1 class="title">
 					  Volunteer Dashboard
 					</h1>
 					<br>

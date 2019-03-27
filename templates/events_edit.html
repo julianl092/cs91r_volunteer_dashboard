@@ -1,7 +1,7 @@
-<!-- templates/events.html -->
+<!-- templates/events_edit.html -->
 {% extends 'base.html' %}
 
-{% block title %}Dashboard -- Events{% endblock %}
+{% block title %}Dashboard -- Edit Event{% endblock %}
 
 {% block content %}
 	{% if user.is_authenticated %}
@@ -57,68 +57,34 @@
     <section class="section">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title">
-            Hi {{ user.username }}!
-          </h1>
-          <h2 class="subtitle">
-            This is the events page. View, add, and edit events.
-          </h2>
-        </div>
-        <!-- Add new event -->
-        <div class="container has-text-centered">
-            <a href="{% url 'add_event' %}">
-              <br>
-              <button class="button is-primary">
-                New event
-              </button>
-            </a>
-        </div>
-        <!-- Table to display events. -->
-        <div class="container has-text-centered">
           <div class="column is-6 is-offset-3">
-            <table class="table">
-              <!-- Column names at the top. -->
-              <thead>
-                <tr>
-                  <th> Name </th>
-                  <th> Description </th>
-                  <th> Location </th>
-                  <th> Date </th>
-                  <th> Volunteers </th>
-                  <th> Cost </th>
-                </tr>
-              </thead>
-              <!-- Column names at the bottom. -->
-              <tfoot>
-                <tr>
-                  <th> Name </th>
-                  <th> Description </th>
-                  <th> Location </th>
-                  <th> Date </th>
-                  <th> Volunteers </th>
-                  <th> Cost </th>
-                </tr>
-              </tfoot>
-              <!-- Events data. -->
-              <tbody>
-                {% for event in events %}
-                  <tr>
-                    <td><a href="{% url 'edit_event' %}?id={{event.id}}"> {{event.name}} </a></td>
-                    <td> {{event.description}} </td>
-                    <td> {{event.address}} </td>
-                    <td> {{event.time}} </td>
-                    <td> 
-                      {% for v in event.volunteers %} 
-                        v.name,
-                      {% endfor %}
-                    </td>
-                    <td> {{event.cost}} </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            <h1 class="title">
+              Hi {{ user.username }}!
+            </h1>
+            <h2 class="subtitle">
+              Edit a event here. If you instead want to create a new event, please go back to the events overview and click on the new event button.
+            </h2>
           </div>
         </div>
+        <form method="post">
+          {% csrf_token %}
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              {{ form.as_p }}
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <button type="submit" class="button is-primary">Edit event</button>
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <input type="submit" value="Delete event" class="button is-danger" name="delete">
+            </div>
+          </div>
+        </form>
+
       </div>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">

@@ -12,4 +12,7 @@ class VolunteerForm(forms.ModelForm):
 			'birthday',
 			'gender',
 			'email',
+			'date_joined',
+			'num_hours',
+			'num_events',
 		)
