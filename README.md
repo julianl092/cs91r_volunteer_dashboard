@@ -12,3 +12,20 @@ Password: super_user_password
 Username: test_user1  
 Email: test_user1@gmail.com  
 Password: test_user1_password  
+
+
+Action Items:  
+Julian  
+- Add “mailchimp” functionality to mass-email all volunteers to an associated event.
+
+Isaac + everyone?  
+- Add data visualizations.
+
+Isaac + Eric  
+- Integration between data visualizations and Django.
+
+Eric  
+- Add filtering of events and volunteers.
+- Add sharing (to social media) functionality for events.
+- Fix event association with volunteers (UI problem or back-end problem?).
+- Update UI.
