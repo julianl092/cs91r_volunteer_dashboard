@@ -15,8 +15,14 @@ Password: test_user1_password
 
 
 Action Items:  
-- Add filtering of events and volunteers.
-- Add sharing functionality for events.
+Julian  
 - Add “mailchimp” functionality to mass-email all volunteers to an associated event.
-- Fix event association with volunteers (UI problem or back-end problem?)
-- Update UI
+Isaac + everyone?  
+- Add data visualizations.
+Isaac + Eric  
+- Integration between data visualizations and Django.
+Eric  
+- Add filtering of events and volunteers.
+- Add sharing (to social media) functionality for events.
+- Fix event association with volunteers (UI problem or back-end problem?).
+- Update UI.
