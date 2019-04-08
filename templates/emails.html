@@ -1,0 +1,93 @@
+<!-- templates/volunteers.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard -- Volunteers{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+    <!-- Body of home page. -->
+    <section class="section">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title">
+            Hi {{ user.username }}!
+          </h1>
+          <h2 class="subtitle">
+            Email page: send emails to volunteers.
+          </h2>
+        </div>
+        <!-- Table to display events. -->
+        <div class="container has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <table class="table">
+              <!-- Column names at the top. -->
+              <thead>
+                <tr>
+                  <th> Name </th>
+                  <th> Address </th>
+                  <th> Birthday </th>
+                  <th> Gender </th>
+                  <th> Date Joined </th>
+                  <th> <abbr title="Total hours volunteered"> # Hrs </abbr> </th>
+                  <th> <abbr title="Number of events attended"> </abbr> # Events </th>
+                </tr>
+              </thead>
+              <!-- Events data. -->
+              <tbody>
+                {% for volunteer in volunteers %}
+                  <tr>
+                    <td><a href="{% url 'edit_volunteer' %}?id={{volunteer.id}}"> {{volunteer.name}} </a></td>
+                    <td> {{volunteer.address}} </td>
+                    <td> {{volunteer.birthday}} </td>
+                    <td> {{volunteer.gender}} </td>
+                    <td> {{volunteer.date_joined}} </td>
+                    <td> {{volunteer.num_hours}} </td>
+                    <td> {{volunteer.num_events}} </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        <div class="field is-grouped is-grouped-centered">
+          <div class="control">
+            {{ form.as_p }}
+          </div>
+        </div>
+        <div class="field is-grouped is-grouped-centered">
+          <div class="control">
+            <button type="submit" class="button is-primary">Send It</button>
+          </div>
+        </div>
+      </form>
+      <!-- Footer of home page. -->
+      <div class="hero-foot is-light has-text-centered">
+        <a>
+          March 2019 <br>
+          Developed by Eric Lin, Julian Lee, and Isaac Robinson
+        </a>
+      </div>
+    </section>
+	<!-- If user not logged in. -->
+	{% else %}
+		<section class="hero is-info is-bold is-fullheight">
+			<div class="hero-body">
+			    <div class="container has-text-centered">
+            <h1 class="title">
+					  Volunteer Dashboard
+					</h1>
+					<br>
+					<h2 class="subtitle">
+						You are not logged in. <br>
+						<a href="{% url 'login' %}">login</a> |
+						<a href="{% url 'signup' %}">signup</a>
+					</h2>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+
+{% endblock %}
