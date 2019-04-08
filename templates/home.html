@@ -6,7 +6,33 @@
 {% block content %}
   {% if user.is_authenticated %}
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <style>
+    .sidebar {
+      float: right; 
+      clear: right;
+      width: 30%
+    }
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 500;
+    }
+    .card {
+      border-radius: 15px;
+      border-style: solid; 
+      padding: 10px;
+      border-color: rgb(95, 79, 139);
+      background-color: rgb(230, 221, 253);
+      font-size: 24px;
+      border-width: 2px;
+      margin-bottom: 10px;
+    }
+    * {
+      font-family: 'Fira Sans', sans-serif;
+      color: black;
+    }
+  </style>
+  </section>
       <!-- Body of home page. -->
       <div class = "titleText">
         Dashboard
@@ -22,6 +48,25 @@
             </h2>
           </div>
         </div>
+        <div class = "sidebar">
+            <h2>TOP VOLUNTEERS</h2>
+            {% for volunteer in volunteers %}
+              <div class="card">
+                <p><strong>{{volunteer.name}}</strong></p>
+                <p>Worked {{volunteer.num_hours}} hours</p>
+                <p>Across {{volunteer.num_events}} events</p>
+                <p>{{volunteer.address}}</p>
+              </div>
+            {% endfor %}
+            <h2>TOP EVENTS</h2>
+            {% for event in events %}
+              <div class = "card">
+              <p><strong>{{event.name}}</strong></p>
+              <p>{{event.address}}</p>
+              <p>{{event.time}}</p>
+              </div>
+            {% endfor %}
+        </div>
       </div>
       <!-- Footer of home page. -->
       <div class="hero-foot has-text-centered">
@@ -34,8 +79,7 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
     <script type="text/javascript" src="http://d3js.org/topojson.v3.min.js"></script>
       <script src="{% static 'js/script2.js' %}"> </script>         
-    </section>
-
+   
 	<!-- If user not logged in. -->
 	{% else %}
 		<section class="hero is-info is-bold is-fullheight">

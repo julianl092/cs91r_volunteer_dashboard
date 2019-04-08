@@ -1,3 +1,8 @@
+@font-face { 
+  font-family: "Gidole";
+  src: ("../gidole/gidole-regular.otf"), format ('opentype');
+}
+
 .line {
   fill: none;
   stroke: #ffab00;
