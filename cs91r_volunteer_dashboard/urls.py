@@ -18,9 +18,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
+from . import views
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),     # home page
+    path('', views.home, name='home'),     # home page
     path('emails/', include('emails.urls')), #emails app
     path('events/', include('events.urls')),   # events app
     path('volunteers/', include('volunteers.urls')),   # volunteers page    
