@@ -20,6 +20,7 @@ Julian
 
 Isaac + everyone?  
 - Add data visualizations.
+- Map: where the next event should be held.
 
 Isaac + Eric  
 - Integration between data visualizations and Django.
@@ -28,4 +29,5 @@ Eric
 - Add filtering of events and volunteers.
 - Add sharing (to social media) functionality for events.
 - Fix event association with volunteers (UI problem or back-end problem?).
+- Volunteer login and check-in at events.
 - Update UI.
