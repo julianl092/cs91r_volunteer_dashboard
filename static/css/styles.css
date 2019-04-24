@@ -1,6 +1,6 @@
-@font-face { 
+@font-face {
   font-family: "Gidole";
-  src: ("../gidole/gidole-regular.otf"), format ('opentype');
+  src: ("../gidole/gidole-regular.otf"), format ("opentype");
 }
 
 .line {
@@ -20,14 +20,13 @@
   margin: -200px 0 154px;
   text-align: center;
 }
-#pieChart {    
+/* #pieChart {    
 	position:absolute;
 	top:10px;
 	left:10px;
 	width:400px;
 	height: 400px; 
 }
-
 
 
 #lineChart {    
@@ -42,20 +41,21 @@
 	top:160px;
 	left:410px;
 	height: 250px;
-}
+} */
 
 .slice {
-   font-size: 12pt;
-   font-family: Verdana;
-   fill: white; //svg specific - instead of color
-   font-weight: bold;	
-  		} 
+  font-size: 12pt;
+  font-family: Verdana;
+  fill: white; //svg specific - instead of color
+  font-weight: bold;
+}
 
 /*for line chart*/
-.axis path, .axis line {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges; //The shape-rendering property is an SVG attribute, used here to make sure our axis and its tick mark lines are pixel-perfect. 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges; //The shape-rendering property is an SVG attribute, used here to make sure our axis and its tick mark lines are pixel-perfect.
 }
 
 .line {
@@ -68,61 +68,58 @@
   /*fill: white;*/
   /*stroke: steelblue;*/
   stroke-width: 1.5px;
-  }
-				
+}
 
 .axis text {
-    font-family: Verdana;
-    font-size: 11px;
+  font-family: Verdana;
+  font-size: 11px;
 }
 
 .title {
-	 font-family: Verdana;
-    font-size: 15px;	
-		
+  font-family: Verdana;
+  font-size: 15px;
 }
 
 .xAxis {
-    font-family: verdana;
-    font-size: 11px;
-    fill: black;
-}  
-
-.yAxis {
-    font-family: verdana;
-    font-size: 11px;
-    fill: white;
+  font-family: verdana;
+  font-size: 11px;
+  fill: black;
 }
 
-  
+.yAxis {
+  font-family: verdana;
+  font-size: 11px;
+  fill: white;
+}
+
 table {
-	border-collapse:collapse;
-	border: 0px;	
-	font-family: Verdana;	
-	color: #5C5558;
-	font-size: 12px;
-	text-align: right;			
+  border-collapse: collapse;
+  border: 0px;
+  font-family: Verdana;
+  color: #5c5558;
+  font-size: 12px;
+  text-align: right;
 }
 
 td {
-	padding-left: 10px;		
+  padding-left: 10px;
 }
 
 #lineChartTitle1 {
-	font-family: Verdana;
-	font-size  : 14px;
-	fill       : lightgrey;
-	font-weight: bold;
-	text-anchor: middle;
+  font-family: Verdana;
+  font-size: 14px;
+  fill: lightgrey;
+  font-weight: bold;
+  text-anchor: middle;
 }
 
 #lineChartTitle2 {
-	font-family: Verdana;
-	font-size  : 72px;
-	fill       : grey;
-	text-anchor: middle;
-	font-weight: bold;
-	/*font-style: italic;*/
+  font-family: Verdana;
+  font-size: 72px;
+  fill: grey;
+  text-anchor: middle;
+  font-weight: bold;
+  /*font-style: italic;*/
 }
 .overlay {
   fill: none;
@@ -175,4 +172,73 @@ td {
 .background-center-container {
   fill: none;
   background: white;
+}
+.hero-body{
+  height: 100vh;
+  width: 100vh;
+}
+.display{
+  display: flex;
+  height: 100vh;
+  width: 100vh;
+  flex-direction: row;
+}
+.graphics {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  border:1px solid black;
+  flex-grow: 2;
+  display: flex;
+}
+.sidebar{
+  flex-grow: 1;
+  order: 2;
+  padding: 1vh;
+}
+.chart-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  order: 2;
+  width: 100%;
+}
+
+.map-container {
+  order: 1;
+  width: 100%;
+  height: 100%;
+  border:1px solid black;
+  display: flex;
+}
+.mapChart {
+  flex-grow: 1;
+  border:1px solid black;
+}
+
+.barChart {
+  flex-grow: 1;
+  order: 2;
+  border:1px solid black;
+}
+/* .barChart:active {
+  background: #ffab00;
+  order: 0;
+} */
+
+
+.lineChart {
+  flex-grow: 1;
+  order: 3;
+  border:1px solid black;
+}
+
+.pieChart {
+  flex-grow: 1;
+  order: 1;
+  border:1px solid black;
+}
+.card{
+  padding: 2vh;
+  width: 75vh;
 }

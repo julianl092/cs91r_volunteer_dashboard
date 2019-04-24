@@ -1,15 +1,21 @@
+
+
+var chartDiv = document.getElementById("mapChart")
 var margin = { top: 10, right: 10, bottom: 10, left: 500 },
-  width = window.innerWidth - margin.left - margin.right, // Use the window's width
-  height = window.innerHeight - margin.top - margin.bottom; // Use the window's height
+  width = chartDiv.clientWidth,
+  height = chartDiv.clientHeight;
+
+print("height");
+print(height);
 
 //MAP
 var active = d3.select(null);
 var svg = d3
-  .select(".hero-body")
+  .select("#mapChart")
   .append("svg")
   .attr("class", "center-container")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom);
+  .attr("width", width)
+  .attr("height", height);
 
 svg
   .append("rect")
@@ -29,8 +35,8 @@ var projection = d3
   .translate([width / 2.5, height / 2.5])
   .scale(width / 5);
 
-var path = d3.geoPath();
-// .projection(projection);
+var path = d3.geoPath()
+  .projection(projection);
 
 var g = svg
   .append("g")
