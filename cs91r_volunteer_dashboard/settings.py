@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',       # register the users app
     'events.apps.EventsConfig',
     'volunteers.apps.VolunteersConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

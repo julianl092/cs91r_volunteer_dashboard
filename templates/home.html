@@ -18,35 +18,30 @@
       font-weight: 500;
     }
     .card {
-      /* border-radius: 15px;  */
       border-style: solid; 
-      text-align: left;
-      /* padding: 10px; 
-      border-color: rgb(24, 0, 95);
-      background-color: rgb(241, 241, 241);
-      font-size: 24px; */
-      border-width: 2px; 
-      /* margin-bottom: 10px; */
+      padding: 10px;
+      font-size: 24px;
+      border-width: 2px;
+      margin-bottom: 10px;
     }
-    * {
-      font-family: 'Fira Sans', sans-serif;
-      color: black;
+    h1 {
+      margin: 10px;
+      padding: 10px; 
+      font-size: 48px; 
+      text-align: center;
     }
+    
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
   </section>
       <!-- Body of home page. -->
-      
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <div class="column is-6 is-offset-3">
-          <div class = "titleText">
-              Dashboard
-                </div>
-            <h1 class="title">
-              Hi {{ user.username }}!
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <h1>
+              WELCOME, <strong>{{ user.username }}</strong>!
             </h1>
           </div>
         </div>
@@ -56,8 +51,8 @@
             {% for volunteer in volunteers %}
               <div class="card">
                 <p><strong>{{volunteer.name}}</strong></p>
-                <p>Worked {{volunteer.num_hours}} hours</p>
-                <p>Across {{volunteer.num_events}} events</p>
+                <p>Worked {{volunteer.num_hours}} hours
+                across {{volunteer.num_events}} events</p>
                 <p>{{volunteer.address}}</p>
               </div>
             {% endfor %}
@@ -121,12 +116,9 @@
       <script src="{% static 'js/pieChart.js' %}"> </script>    
       <script src="{% static 'js/barChart.js' %}"> </script>    
       <script src="{% static 'js/map.js' %}"> </script>   
-      
-     
-     
+      <script type="text/javascript" src="http://d3js.org/topojson.v3.min.js"></script>
+      <script src="{% static 'js/script2.js' %}"> </script>       
 
-      
-   
 	<!-- If user not logged in. -->
 	{% else %}
 		<section class="hero is-info is-bold is-fullheight">
@@ -139,7 +131,7 @@
 					</h1>
 					<br>
 					<h2 class="subtitle">
-						You are not logged in. <br>
+						You are nowhy does strong change colort logged in. <br>
 						<a href="{% url 'login' %}">login</a> |
 						<a href="{% url 'signup' %}">signup</a>
 					</h2>
@@ -147,5 +139,4 @@
       </div>
 		</section>
 	{% endif %}
-
 {% endblock %}

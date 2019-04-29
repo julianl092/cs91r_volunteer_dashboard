@@ -1,74 +1,66 @@
 <!-- templates/volunteers.html -->
 {% extends 'base.html' %}
-
 {% block title %}Dashboard -- Volunteers{% endblock %}
-
 {% block content %}
-	{% if user.is_authenticated %}
+  {% if user.is_authenticated %}
+  <style>
+    form {
+      margin: 35px;
+    }
+    h1 {
+      font-size: 100px;
+      color: black;
+    }
+    h2 {
+      font-size: 48px;
+      text-align: left;
+    }
+    p { 
+      font-size: 36px;
+    }
+    .column {
+      border: solid;
+    }
+  </style>
     <!-- Body of home page. -->
     <section class="section">
       <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title">
-            Hi {{ user.username }}!
-          </h1>
-          <h2 class="subtitle">
-            Email page: send emails to volunteers.
-          </h2>
-        </div>
         <!-- Table to display events. -->
-        <div class="container has-text-centered">
-          <div class="column is-6 is-offset-3">
-            <table class="table">
-              <!-- Column names at the top. -->
-              <thead>
-                <tr>
-                  <th> Name </th>
-                  <th> Address </th>
-                  <th> Birthday </th>
-                  <th> Gender </th>
-                  <th> Date Joined </th>
-                  <th> <abbr title="Total hours volunteered"> # Hrs </abbr> </th>
-                  <th> <abbr title="Number of events attended"> </abbr> # Events </th>
-                </tr>
-              </thead>
-              <!-- Events data. -->
-              <tbody>
-                {% for volunteer in volunteers %}
-                  <tr>
-                    <td><a href="{% url 'edit_volunteer' %}?id={{volunteer.id}}"> {{volunteer.name}} </a></td>
-                    <td> {{volunteer.address}} </td>
-                    <td> {{volunteer.birthday}} </td>
-                    <td> {{volunteer.gender}} </td>
-                    <td> {{volunteer.date_joined}} </td>
-                    <td> {{volunteer.num_hours}} </td>
-                    <td> {{volunteer.num_events}} </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+        <h1>(1) <strong>Select Your Recipients</strong></h1>
+        <div class = "columns">
+          <div class = "column">
+              <h2>I want to get in touch with everyone who ... </h2>
+              <form method="get">
+                  <p>Has worked at at least {{ filter.form.num_events }} events</p>
+                  <p>Has worked for at least {{ filter.form.num_hours }} hours</p>
+                  <p>Joined before the year {{ filter.form.year_joined__lte }}</p>
+                  <p>Joined after the year {{ filter.form.year_joined__gte }}</p>
+                  <p>Was born before the year {{ filter.form.birthday__lte }}</p>
+                  <p>Was born after the year {{ filter.form.birthday__gte }}</p>
+                  <p>Identifies as {{filter.form.gender}} gender</p>
+                  <button class = 'button is-dark is-large' type="submit">Filter</button>
+                </form>
+          </div>
+          <div class = "column">
+            <h2 style = 'text-align: center;'>Filter Results:</h2>
+              {% for user in filter.qs %}
+                <p>{{ user.name }}</p>
+              {% endfor %}
           </div>
         </div>
-      </div>
-      <form method="post">
-        {% csrf_token %}
-        <div class="field is-grouped is-grouped-centered">
-          <div class="control">
-            {{ form.as_p }}
-          </div>
-        </div>
-        <div class="field is-grouped is-grouped-centered">
-          <div class="control">
-            <button type="submit" class="button is-primary">Send It</button>
-          </div>
-        </div>
-      </form>
+        <h1>(2) <strong>Compose Your Message</strong></h1>
+        <form method = "post"> 
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class = 'button is-dark is-large' type = "submit">Send Email</button>
+        </form>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">
         <a>
           March 2019 <br>
           Developed by Eric Lin, Julian Lee, and Isaac Robinson
         </a>
+      </div>
       </div>
     </section>
 	<!-- If user not logged in. -->
