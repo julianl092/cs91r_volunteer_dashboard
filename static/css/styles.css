@@ -194,7 +194,7 @@ td {
 .sidebar{
   flex-grow: 1;
   order: 2;
-  padding: 1vh;
+  padding: 5vh;
 }
 .chart-container {
   display: flex;
@@ -240,5 +240,5 @@ td {
 }
 .card{
   padding: 2vh;
-  width: 75vh;
+  width: 45vw;
 }
