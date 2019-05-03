@@ -30,95 +30,92 @@
       font-size: 48px; 
       text-align: center;
     }
+
+    .container {
+      text-align: center;
+    }
     
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-  </section>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+  <section>
       <!-- Body of home page. -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <div class="column is-6 is-offset-3">
             <h1>
               WELCOME, <strong>{{ user.username }}</strong>!
             </h1>
-          </div>
-        </div>
         <div class = "display">
-        <div class = "sidebar">
-            <h2>TOP VOLUNTEERS</h2>
-            {% for volunteer in volunteers %}
-              <div class="card">
-                <p><strong>{{volunteer.name}}</strong></p>
-                <p>Worked {{volunteer.num_hours}} hours
-                across {{volunteer.num_events}} events</p>
-                <p>{{volunteer.address}}</p>
-              </div>
-            {% endfor %}
-            <h2>TOP EVENTS</h2>
-            {% for event in events %}
-              <div class = "card">
-              <p><strong>{{event.name}}</strong></p>
-              <p>{{event.address}}</p>
-              <p>{{event.time}}</p>
-              </div>
-            {% endfor %}
-        </div>
-        <div class = 'graphics'>
-        <div class = "chart-container">
-            <div class="pieChart" id ="pieChart" onclick="test('pieChart')">
-              <canvas id="myPieChart"></canvas>
-            </div>
+          <div class = "sidebar">
+              <h2>TOP VOLUNTEERS</h2>
+              {% for volunteer in volunteers %}
+                <div class="card">
+                  <p><strong>{{volunteer.name}}</strong></p>
+                  <p>Worked {{volunteer.num_hours}} hours
+                  across {{volunteer.num_events}} events</p>
+                  <p>{{volunteer.address}}</p>
+                </div>
+              {% endfor %}
+              <h2>TOP EVENTS</h2>
+              {% for event in events %}
+                <div class = "card">
+                <p><strong>{{event.name}}</strong></p>
+                <p>{{event.address}}</p>
+                <p>{{event.time}}</p>
+                </div>
+              {% endfor %}
+          </div>
+          <div class = 'graphics'>
+            <div class = "chart-container">
+                <div class="pieChart" id ="pieChart" onclick="test('pieChart')">
+                  <canvas id="myPieChart"></canvas>
+                </div>
 
-            <div class="barChart" id="barChart" onclick="test('barChart')">
-              <canvas id = "myBarChart"></canvas>
-            </div>  
-            <script>
-              function test(i){
-                document.getElementById('lineChart').style.order=1;
-                document.getElementById('barChart').style.order=2;
-                document.getElementById('pieChart').style.order=3;
-                document.getElementById(i).style.order=0;
-              }
-            </script>
-            <div class="lineChart" id="lineChart" onclick="test('lineChart')">
-              <canvas id = "myLineChart"></canvas>
-            </div>
-        </div>
+                <div class="barChart" id="barChart" onclick="test('barChart')">
+                  <canvas id = "myBarChart"></canvas>
+                </div>  
 
-          <div class ="map-container">
-              <!-- <iframe
-              frameborder="0" style="border:0" class = "geoMap"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDSJYjr4P6YwDtlHmuQJTWcsWg9prFynf4
-                &q=Space+Needle,Seattle+WA&q=12.927923,77.627108" allowfullscreen>
-            </iframe> -->
-              <!-- <div class ="mapChart"> -->
-                  <div id='map' style='width: 100%; height: 100%;'></div>
+                <script>
+                  function test(i){
+                    document.getElementById('lineChart').style.order=1;
+                    document.getElementById('barChart').style.order=2;
+                    document.getElementById('pieChart').style.order=3;
+                    document.getElementById(i).style.order=0;
+                  }
+                </script>
 
-           </div>
+                <div class="lineChart" id="lineChart" onclick="test('lineChart')">
+                  <canvas id = "myLineChart"></canvas>
+                </div>
             </div>
-        </div>
+            <div class ="map-container">
+                <!-- <iframe
+                frameborder="0" style="border:0" class = "geoMap"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDSJYjr4P6YwDtlHmuQJTWcsWg9prFynf4
+                  &q=Space+Needle,Seattle+WA&q=12.927923,77.627108" allowfullscreen>
+              </iframe> -->
+                <!-- <div class ="mapChart"> -->
+                <div id='map' style='width: 100%; height: 100%;'></div>
+            </div>
           </div>
       </div>
       <!-- Footer of home page. -->
-      <!-- <div class="hero-foot has-text-centered">
-        <a>
-          March 2019 <br>
-          Developed by Eric Lin, Julian Lee, and Isaac Robinson
-        </a>
-      </div> -->
-      <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+        <!-- <div class="hero-foot has-text-centered">
+          <a>
+            March 2019 <br>
+            Developed by Eric Lin, Julian Lee, and Isaac Robinson
+          </a>
+        </div>  -->
+      <!--<script src="https://d3js.org/d3.v5.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-    <script type="text/javascript" src="http://d3js.org/topojson.v3.min.js"></script>
-       <script src="{% static 'js/script2.js' %}"> </script>  -->
+    <script type="text/javascript" src="http://d3js.org/topojson.v3.min.js"></script> -->
+       <script src="{% static 'js/script2.js' %}"> </script>
       <script src="{% static 'js/lineChart.js' %}"> </script>     
       <script src="{% static 'js/pieChart.js' %}"> </script>    
       <script src="{% static 'js/barChart.js' %}"> </script>    
       <script src="{% static 'js/map.js' %}"> </script>   
       <script type="text/javascript" src="http://d3js.org/topojson.v3.min.js"></script>
       <script src="{% static 'js/script2.js' %}"> </script>       
-
+    </section>
 	<!-- If user not logged in. -->
 	{% else %}
 		<section class="hero is-info is-bold is-fullheight">
