@@ -56,42 +56,43 @@
                   <a class = "button is-dark is-rounded is-focused is-large" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Quick Follow Up</a>
                   <a class = "button is-link is-rounded is-focused is-large" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Custom Follow Up</a>
                   <script>
-                  console.log ("{{volunteer}}");
-                  // Set the date we're counting down to
-
-                  var selected_year = {{ volunteer.date_joined.year}};
-                  var selected_month = {{ volunteer.date_joined.month}} + 2;
-                  var selected_day = {{ volunteer.date_joined.day}} + 1;
-                  var selected_hours = {{volunteer.date_joined.hour}};
-                  var selected_minutes = {{volunteer.date_joined.minute}};
-                  var selected_seconds = {{volunteer.date_joined.second}};
-                  var countDownDate = new Date(selected_year, selected_month, selected_day, selected_hours, selected_minutes, selected_seconds).getTime();
                   
                   // Update the count down every 1 second
-                  var x = setInterval(function() {
-    
-                  // Get todays date and time
-                  var now = new Date().getTime();
-    
-                  // Find the distance between now and the count down date
-                  var distance = countDownDate - now;
-    
-                  // Time calculations for days, hours, minutes and seconds
-                  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                  var x = setInterval(
+                    function() {
+                      // Set the date we're counting down to
+                      var selected_year = {{ volunteer.date_joined.year}};
+                      var selected_month = {{ volunteer.date_joined.month}} + 2;
+                      var selected_day = {{ volunteer.date_joined.day}} + 1;
+                      var selected_hours = {{volunteer.date_joined.hour}};
+                      var selected_minutes = {{volunteer.date_joined.minute}};
+                      var selected_seconds = {{volunteer.date_joined.second}};
+                      var countDownDate = new Date(selected_year, selected_month, selected_day, selected_hours, selected_minutes, selected_seconds).getTime();
 
-                  // Display the result in the element with id="demo"
-                  document.getElementById("{{volunteer.name}}").innerHTML = days + "d " + hours + "h "
-                  + minutes + "m " + seconds + "s ";
-    
-                  // If the count down is finished, write some text 
-                  if (distance < 0) {
-                  clearInterval(x);
-                  document.getElementById("{{volunteer.name}}").innerHTML = "EXPIRED";
-                  }
-                  }, 1000);
+                      // Get todays date and time
+                      var now = new Date().getTime();
+        
+                      // Find the distance between now and the count down date
+                      var distance = countDownDate - now;
+
+        
+                      // Time calculations for days, hours, minutes and seconds
+                      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                      // Display the result in the element with id="demo"
+                      document.getElementById("{{volunteer.name}}").innerHTML = days + "d " + hours + "h "
+                      + minutes + "m " + seconds + "s ";
+        
+                      // If the count down is finished, write some text 
+                      if (distance < 0) {
+                      clearInterval(x);
+                      document.getElementById("{{volunteer.name}}").innerHTML = "EXPIRED";
+                      }
+                    }, 1000
+                  );
                   </script>
                 </div>
               {% endfor %}
