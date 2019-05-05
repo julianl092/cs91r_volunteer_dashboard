@@ -46,7 +46,7 @@
 .slice {
   font-size: 12pt;
   font-family: Verdana;
-  fill: white; //svg specific - instead of color
+  fill: white; 
   font-weight: bold;
 }
 
@@ -55,7 +55,7 @@
 .axis line {
   fill: none;
   stroke: black;
-  shape-rendering: crispEdges; //The shape-rendering property is an SVG attribute, used here to make sure our axis and its tick mark lines are pixel-perfect.
+  shape-rendering: crispEdges; 
 }
 
 .line {
@@ -183,6 +183,7 @@ td {
   width: 100vh;
   flex-direction: row;
 }
+
 .graphics {
   order: 1;
   display: flex;
