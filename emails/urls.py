@@ -6,5 +6,6 @@ from . import views
 app_name = 'emails'
 urlpatterns = [
     url(r'^search/$', views.search, name='search'),
-    path('<str:email>/<str:name>/', views.quicksend, name='quicksend'),
+    path('quick/<str:email>/<str:name>/', views.quicksend, name='quicksend'),
+    path('custom/<str:email>/<str:name>/', views.customsend, name='customsend'),
 ]

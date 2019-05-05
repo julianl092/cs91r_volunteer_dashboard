@@ -50,11 +50,11 @@
               <hr>
               {% for volunteer in volunteers %}
                 <div class="card">
-                  <p><strong>{{volunteer.name}}</strong></p>
-                  <p>Joined {{volunteer.date_joined}}</p>
-                  <p id= "{{volunteer.name}}"></p> 
+                  <p style = "font-weight: 600; font-size: 32px;">{{volunteer.name}}</p>
+                  <p>Registered {{volunteer.date_joined}}</p>
+                  <p>Follow Up Countdown: <h3 style = "font-weight: 600; color: hsl(217, 71%, 53%)" id = "{{volunteer.name}}"></h3></p> 
                   <a class = "button is-dark is-rounded is-focused is-large" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Quick Follow Up</a>
-                  <a class = "button is-link is-rounded is-focused is-large" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Custom Follow Up</a>
+                  <a class = "button is-link is-rounded is-focused is-large" href="{% url 'emails:customsend' volunteer.email volunteer.name %}">Custom Follow Up</a>
                   <script>
                   console.log ("{{volunteer}}");
                   // Set the date we're counting down to
@@ -83,8 +83,8 @@
                   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                   // Display the result in the element with id="demo"
-                  document.getElementById("{{volunteer.name}}").innerHTML = days + "d " + hours + "h "
-                  + minutes + "m " + seconds + "s ";
+                  document.getElementById("{{volunteer.name}}").innerHTML = hours + " hours, "
+                  + minutes + " minutes, " + seconds + " seconds";
     
                   // If the count down is finished, write some text 
                   if (distance < 0) {
