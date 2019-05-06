@@ -204,6 +204,14 @@ td {
   width: 100%;
   height: 100%;
 }
+.hero-head{
+  position: fixed; 
+  width: 100%;
+  height: 10%;
+  color: black;
+  z-index: 10;
+}
+
 
 /* .map-container {
   order: 1;
@@ -217,7 +225,7 @@ td {
   order:1;
   border:1px solid black;
   height: 100vh;
-  width: 120vh;
+  width: 100%;
 }
 
 .barChart {
