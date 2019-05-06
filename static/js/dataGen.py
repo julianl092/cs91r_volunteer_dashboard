@@ -8,8 +8,6 @@ with open('airport.csv', newline='', encoding='utf-8-sig') as csvfile:
     for latitude, longitude, name in reader:
         latitude.replace(" ", "")
         longitude.replace(" ", "")
-        print (repr(latitude))
-        print(len(latitude))
         latitude, longitude = map(float, (latitude, longitude))
         features.append(
             Feature(

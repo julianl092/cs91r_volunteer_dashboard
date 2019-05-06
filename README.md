@@ -30,4 +30,14 @@ Eric
 - Add sharing (to social media) functionality for events.
 - Fix event association with volunteers (UI problem or back-end problem?).
 - Volunteer login and check-in at events.
-- Update UI.
+- Update UI.  
+
+To-Dos:
+- Restructuring home page
+- Link the data with homepage
+- Add volunteer survey
+- Fix volunteer UI
+- Slides
+- CSV
+
+
