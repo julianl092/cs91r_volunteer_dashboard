@@ -206,8 +206,6 @@ td {
   display: flex;
   flex-direction: column;
   order: 1;
-  width: 100%;
-  height: 100%;
 }
 .hero-head{
   position: fixed; 
@@ -227,8 +225,8 @@ td {
 } */
 .mapChart {
   flex-grow: 1;
-  order:1;
-  border:1px solid black;
+  order:4;
+  /* border:1px solid black; */
   height: 100vh;
   width: 100%;
 }
@@ -236,7 +234,11 @@ td {
 .barChart {
   flex-grow: 1;
   order: 2;
-  border:1px solid black;
+  padding-top: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  /* border:1px solid black; */
 }
 /* .barChart:active {
   background: #ffab00;
@@ -247,15 +249,23 @@ td {
 .lineChart {
   flex-grow: 1;
   order: 3;
-  border:1px solid black;
+  padding-top: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  /* border:1px solid black; */
 }
 
 .pieChart {
   flex-grow: 1;
   order: 1;
-  border:1px solid black;
+  padding-top: 30%;
+  padding-right: 20%;
+  padding-bottom: 30%;
+  padding-left: 20%;
+  /* border:1px solid black; */
 }
 .card{
   padding: 2vh;
-  width: 45vw;
+  width:100vw;
 }
