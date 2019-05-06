@@ -18,29 +18,30 @@
               Edit a event here. If you instead want to create a new event, please go back to the events overview and click on the new event button.
             </h2>
           </div>
-        </div>
-        <form method="post">
-          {% csrf_token %}
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              {{ form.as_p }}
+          
+          <form method="post">
+            {% csrf_token %}
+            <div class="field is-grouped is-grouped-centered">
+              <table border="1">
+                {{ form }}
+              </table>
             </div>
-          </div>
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              <button type="submit" class="button is-primary">Edit event</button>
+            <div class="field is-grouped is-grouped-centered">
+              <div class="control">
+                <button type="submit" class="button is-primary">Edit event</button>
+              </div>
             </div>
-          </div>
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              <input type="submit" value="Delete event" class="button is-danger" name="delete">
+            <div class="field is-grouped is-grouped-centered">
+              <div class="control">
+                <input type="submit" value="Delete event" class="button is-danger" name="delete">
+              </div>
             </div>
-          </div>
-          <div class="field is-grouped is-grouped-centered">
+          </form>
+
+          <div class="field is-grouped-centered">
             <a href="{% url 'events' %}"> Back to Events Page </a>
           </div>
-        </form>
-
+        </div>
       </div>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">

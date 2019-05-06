@@ -11,50 +11,50 @@
     <section class="section">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <div class="column is-6 is-offset-3">
-            <h1 class="title">
-              Hi {{ user.username }}!
-            </h1>
-            <h2 class="subtitle">
-              Add a new volunteer here. If you instead want to edit data for a pre-existing volunteer, please go back to the volunteer overview and click on the name of the volunteer's data you would like to edit.
-            </h2>
-          </div>
-        </div>
-        <form method="post">
-          {% csrf_token %}
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              {{ form.as_p }}
+            <div class="column is-6 is-offset-3">
+              <h1 class="title">
+                Hi {{ user.username }}!
+              </h1>
+              <h2 class="subtitle">
+                Add a new volunteer here. If you instead want to edit data for a pre-existing volunteer, please go back to the volunteer overview and click on the name of the volunteer's data you would like to edit.
+              </h2>
             </div>
-          </div>
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              <button type="submit" class="button is-primary">Add volunteer</button>
-            </div>
-          </div>
-        </form>
-
-        <div class="field is-grouped is-grouped-centered">
-          <form action="{% url 'upload_csv' %}" method="post"  enctype="multipart/form-data">
+          <form method="post">
             {% csrf_token %}
-              <div class="form-group" enctype="multipart/form-data" class="form-horizontal">
-                <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
-                <div class="control">
-                    <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
-                </div>                    
+            <div class="field is-grouped is-grouped-centered">
+              <div class="control">
+                {{ form.as_p }}
+              </div>
             </div>
-            <div class="form-group">                    
-                <div class="control">
-                     <button type ="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
-                </div> 
+            <div class="field is-grouped is-grouped-centered">
+              <div class="control">
+                <button type="submit" class="button is-primary">Add volunteer</button>
+              </div>
             </div>
           </form>
-        </div>
-        
-        <div class="field is-grouped is-grouped-centered">
-            <a href="{% url 'events' %}"> Back to Events Page </a>
-        </div>
 
+          <div class="field is-grouped is-grouped-centered">
+            <form action="{% url 'upload_csv' %}" method="post"  enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="form-group" enctype="multipart/form-data" class="form-horizontal">
+                  <br>
+                  <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">Add File: </label>
+                  <div class="control">
+                      <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+                  </div>                    
+              </div>
+              <div class="form-group">                    
+                  <div class="control">
+                       <button type ="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                  </div> 
+              </div>
+            </form>
+          </div>
+          
+          <div class="field is-grouped-centered">
+              <a href="{% url 'events' %}"> Back to Events Page </a>
+          </div>
+        </div>
       </div>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">

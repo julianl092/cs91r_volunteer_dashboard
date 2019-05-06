@@ -10,32 +10,31 @@
     <section class="section">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <div class="column is-6 is-offset-3">
-            <h1 class="title">
-              Hi {{ user.username }}!
-            </h1>
-            <h2 class="subtitle">
-              Add a new event here. If you instead want to edit a pre-existing event, please go back to the events overview and click on the name of the event you would like to edit.
-            </h2>
-          </div>
-        </div>
-        <form method="post">
-          {% csrf_token %}
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              {{ form.as_p }}
+            <div class="column is-6 is-offset-3">
+              <h1 class="title">
+                Hi {{ user.username }}!
+              </h1>
+              <h2 class="subtitle">
+                Add a new event here. If you instead want to edit a pre-existing event, please go back to the events overview and click on the name of the event you would like to edit.
+              </h2>
             </div>
-          </div>
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              <button type="submit" class="button is-primary">Add event</button>
+          <form method="post">
+            {% csrf_token %}
+            <div class="field is-grouped is-grouped-centered">
+              <table border="1">
+                  {{ form }}
+              </table>
             </div>
-          </div>
-          <div class="field is-grouped is-grouped-centered">
+            <div class="field is-grouped is-grouped-centered">
+              <div class="control">
+                <button type="submit" class="button is-primary">Add event</button>
+              </div>
+            </div>
+          </form>
+          <div class="field is-grouped-centered">
             <a href="{% url 'events' %}"> Back to Events Page </a>
           </div>
-        </form>
-
+        </div>
       </div>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">
