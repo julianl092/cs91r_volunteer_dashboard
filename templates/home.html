@@ -64,7 +64,7 @@
                 </div>
               {% endfor %}
           </div>
-          <div class = 'graphics'>
+          <!-- <div class = 'graphics'> -->
             <div class = "chart-container">
                 <div class="pieChart" id ="pieChart" onclick="test('pieChart')">
                   <canvas id="myPieChart"></canvas>
@@ -74,30 +74,33 @@
                   <canvas id = "myBarChart"></canvas>
                 </div>  
 
-                <script>
+                <!-- <script>
                   function test(i){
                     document.getElementById('lineChart').style.order=1;
                     document.getElementById('barChart').style.order=2;
                     document.getElementById('pieChart').style.order=3;
                     document.getElementById(i).style.order=0;
                   }
-                </script>
+                </script> -->
 
                 <div class="lineChart" id="lineChart" onclick="test('lineChart')">
                   <canvas id = "myLineChart"></canvas>
                 </div>
+                
+                <!-- <div class = "mapChart" id='map' style='width: 100%; height: 100%;'></div> -->
+                <div class = "mapChart" id='map'></div>
             </div>
-            <div class ="map-container">
+            <!-- <div class ="map-container"> -->
                 <!-- <iframe
                 frameborder="0" style="border:0" class = "geoMap"
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDSJYjr4P6YwDtlHmuQJTWcsWg9prFynf4
                   &q=Space+Needle,Seattle+WA&q=12.927923,77.627108" allowfullscreen>
               </iframe> -->
                 <!-- <div class ="mapChart"> -->
-                <div id='map' style='width: 100%; height: 100%;'></div>
-            </div>
+                <!-- <div id='map' style='width: 100%; height: 100%;'></div> -->
+            <!-- </div> -->
           </div>
-      </div>
+      <!-- </div> -->
       <!-- Footer of home page. -->
         <!-- <div class="hero-foot has-text-centered">
           <a>

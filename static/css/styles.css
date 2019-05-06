@@ -179,41 +179,45 @@ td {
 }
 .display{
   display: flex;
-  height: 100vh;
-  width: 100vh;
-  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
 }
-.graphics {
+/* .graphics {
   order: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border:1px solid black;
   flex-grow: 2;
   display: flex;
-}
-.sidebar{
+} */
+ .sidebar{
   flex-grow: 1;
-  order: 2;
+  order: 1;
   padding: 1vh;
-}
+} 
 .chart-container {
+  order:2;
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  order: 2;
+  flex-direction: column;
+  order: 1;
   width: 100%;
+  height: 100%;
 }
 
-.map-container {
+/* .map-container {
   order: 1;
   width: 100%;
   height: 100%;
   border:1px solid black;
   display: flex;
-}
+} */
 .mapChart {
   flex-grow: 1;
+  order:1;
   border:1px solid black;
+  height: 100vh;
+  width: 120vh;
 }
 
 .barChart {
@@ -240,5 +244,5 @@ td {
 }
 .card{
   padding: 2vh;
-  width: 75vh;
+  /* width: 75vh; */
 }
