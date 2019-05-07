@@ -11,6 +11,20 @@ def index(request):
 	elif request.method == "POST":
 		print("POST request")
 
+def filter_events(request):
+	if request.method == "GET":		# render page with form to filter events
+		context = {
+		
+		}
+		return render(request, 'filter_events.html', context)
+
+	elif request.method == "POST":	# return filtered events page
+		events = Event.objects.values()	# get querySet of events
+		context = {
+			'events': events
+		} 	
+		return render(request, 'events.html', context)
+
 def add_event(request):
 	if request.method == "GET":		# render page with form to add new event
 		form = EventForm()

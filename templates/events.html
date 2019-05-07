@@ -33,10 +33,15 @@
         </div>
         <!-- Add new event -->
         <div class="container has-text-centered">
-            <a href="{% url 'add_event' %}">
+            <a href="{% url 'filter_events' %}">
               <br>
-              <button class="button is-primary">
-                New event
+              <button class="button is-info">
+                Filter events
+              </button>
+            </a>
+            <a href="{% url 'add_event' %}">
+              <button class="button is-info">
+                Add new event
               </button>
             </a>
         </div>
