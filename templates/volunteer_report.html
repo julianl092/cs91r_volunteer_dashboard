@@ -1,7 +1,7 @@
-<!-- templates/volunteers_edit.html -->
+<!-- templates/volunteer_report.html -->
 {% extends 'base.html' %}
 
-{% block title %}Dashboard -- Edit Volunteer{% endblock %}
+{% block title %}Dashboard -- Add Volunteer Report{% endblock %}
 
 {% block content %}
 	{% if user.is_authenticated %}
@@ -17,7 +17,7 @@
                 Hi {{ user.username }}!
               </h1>
               <h2 class="subtitle">
-                Edit a volunteer here. If you instead want to create a new volunteer, please go back to the volunteers overview and click on the new volunteer button.
+                Add a new volunteer report.
               </h2>
             </div>
           </div>
@@ -31,33 +31,10 @@
               </div>
               <div class="field is-grouped is-grouped-centered">
                 <div class="control">
-                  <button type="submit" class="button is-success">Edit volunteer</button>
+                  <button type="submit" class="button is-success">Add report</button>
                 </div>
               </div>
-              <div class="field is-grouped is-grouped-centered">
-                <div class="control">
-                  <input type="submit" value="Delete volunteer" class="button is-danger" name="delete">
-                </div>
-              </div>
-            </form>
-
-            <br>
-            <h2> Past Reports </h2>
-            <ul>
-              {% for report in reports %}
-                <p>Comments: {{report.comments}}</p>
-                <p>Ratings from a scale of 1-10:</p>
-                <p>Overall rating: {{report.overall_rating}}</p>
-                <p>Satisfaction: {{report.satisfaction}}</p>
-                <p>Support: {{report.support}}</p>
-                <p>How meaningful they felt their work was: {{report.meaningful}}</p>
-                <p>How likely they will volunteer again: {{report.repeat_likeliness}}</p>
-              {% endfor %}
-            </ul>
-            <div class="field is-grouped is-grouped-centered">
-              <a href="{% url 'volunteer_report' %}?volunteer_id={{volunteer_id}}" class="button" > Add Report </a>
-            </div>
-            
+            </form>  
             <div class="field is-grouped-centered">
                 <a href="{% url 'volunteers' %}"> Back to Volunteers Page </a>
             </div>

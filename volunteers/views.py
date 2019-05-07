@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from emails.filters import VolunteerFilter
-from .models import Volunteer
-from .forms import VolunteerForm
+from .models import Volunteer, VolunteerReport
+from .forms import VolunteerForm, ReportForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 def index(request):
@@ -127,11 +127,15 @@ def edit_volunteer(request):
 		form_instance = Volunteer.objects.get(id=volunteer_id)
 		if request.method == "GET":		# render page to edit volunteer
 			form = VolunteerForm(instance=form_instance)
-			context = {'form': form}
+			reports = list(VolunteerReport.objects.filter(volunteer=volunteer_id).values())
+			context = {
+				'form': form,
+				'volunteer_id': volunteer_id,
+				'reports': reports,
+			}
 			return render(request, 'volunteers_edit.html',context)
 		elif request.method == "POST":	# edit volunteer data
 			if(request.POST.get('delete', '') == ''):		# if not delete
-				print(request.POST.get('delete'))
 				form = VolunteerForm(request.POST, instance=form_instance)
 				if form.is_valid():
 					form.save()		# save new volunteer data to form
@@ -146,4 +150,30 @@ def edit_volunteer(request):
 				context = {'volunteers': volunteers} 	
 				return render(request, 'volunteers.html', context)		# render volunteers html
 
+def volunteer_report(request):
+	volunteer_id = request.GET.get('volunteer_id', '')
+	if request.method == "GET":		# render page for volunteer report
+		print("GET")
+		form = ReportForm({'volunteer': volunteer_id})
+		context = {
+			'form': form,
+		}
+		return render(request, 'volunteer_report.html', context)
+
+	elif request.method == "POST":	# post volunteer reports
+		print("POST")
+		form = ReportForm(request.POST)
+		if form.is_valid():
+			form.save()
+			form_instance = Volunteer.objects.get(id=volunteer_id)
+			form = VolunteerForm(instance=form_instance)
+			reports = list(VolunteerReport.objects.filter(volunteer=volunteer_id).values())
+			context = {
+				'form': form,
+				'volunteer_id': volunteer_id,
+				'reports': reports,
+			}
+			return render(request, 'volunteers_edit.html',context)
+		else:
+			return render(request, 'form_error.html')
 

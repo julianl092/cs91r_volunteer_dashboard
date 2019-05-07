@@ -63,7 +63,7 @@
             <h2>New Volunteers</h2>
             <hr>
             <div class = "card-container">
-            {% for volunteer in volunteers %}
+            {% for volunteer in volunteers reversed %}
               <div class="card">
                 <a href="{% url 'edit_volunteer' %}?id={{volunteer.id}}" style = "font-weight: 600; font-size: 32px;"> 
                   {{volunteer.name}} 
@@ -110,10 +110,10 @@
               </div>
             {% endfor %}
             </div>
-            <h2>Upcoming Events</h2>
+            <h2>Recent Events</h2>
             <hr>
             <div class = "card-container">
-            {% for event in events %}
+            {% for event in events reversed %}
               <div class = "card">
               <a href="{% url 'edit_event' %}?id={{event.id}}"> <strong> {{event.name}} </strong> </a>
               <p>Registered Volunteers: {% for v in event.volunteers.all%} <a href="{% url 'edit_volunteer' %}?id={{v.id}}">{{v.name}}, </a>{% endfor %}</p>
