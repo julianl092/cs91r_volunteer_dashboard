@@ -36,10 +36,14 @@ h2 {
             </h2>
         <!-- Add new event -->
         <div class="container has-text-centered">
+            <a href="{% url 'filter_volunteers' %}">
+              <button class="button is-info">
+                Filter volunteers
+              </button>
+            </a>
             <a href="{% url 'add_volunteer' %}">
-              <br>
-              <button class="button is-primary">
-                New volunteer
+              <button class="button is-success">
+                Add new volunteer +
               </button>
             </a>
         </div>

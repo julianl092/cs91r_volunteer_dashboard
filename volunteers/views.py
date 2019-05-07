@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from emails.filters import VolunteerFilter
 from .models import Volunteer
 from .forms import VolunteerForm
 from django.http import HttpResponseRedirect
@@ -14,22 +15,33 @@ def index(request):
 	elif request.method == "POST":
 		print("POST request volunteer")
 
+def filter_volunteers(request):
+	if request.method == "GET":		# render page with form to filter volunteers
+		user_list = Volunteer.objects.all()
+		user_filter = VolunteerFilter(request.GET, queryset=user_list)
+		context = {
+			'filter': user_filter,
+		}
+		return render(request, 'filter_volunteers.html', context)
+	elif request.method == "POST":	# render filtered volunteer page
+		print("POST")
+
 def add_volunteer(request):
-	if request.method == "GET":		# render page with form to add new event
+	if request.method == "GET":		# render page with form to add new volunteer
 		form = VolunteerForm()
 		context = {
 			'form': form
 		}
-		return render(request, 'volunteers_add.html', context)	# render events_add.html
+		return render(request, 'volunteers_add.html', context)	# render volunteers_add.html
 
-	elif request.method == "POST":	# save the form input as new event in database
+	elif request.method == "POST":	# save the form input as new volunteer in database
 		form = VolunteerForm(request.POST)
 		print(request.POST)
 		if form.is_valid():
-			form.save()		# save new event data to form
-			volunteers = Volunteer.objects.values()	# get querySet of events
+			form.save()		# save new volunteer data to form
+			volunteers = Volunteer.objects.values()	# get querySet of volunteers
 			context = {'volunteers': volunteers} 	
-			return render(request, 'volunteers.html', context)		# render events html
+			return render(request, 'volunteers.html', context)		# render volunteers html
 		else:
 			return render(request, 'form_error.html')	# error page
 
@@ -71,17 +83,17 @@ def upload_csv(request):
 			data_dict["date_joined"] = fields[5]
 			data_dict["initial-date_joined"] = fields[5]
 			data_dict["num_hours"] = fields[6]
-			data_dict["num_events"] = fields[7]
+			data_dict["num_volunteers"] = fields[7]
 			# print("data:")
 			# print(data_dict)
 			try:
 				form = VolunteerForm(data_dict)
 				if form.is_valid():
 					form.save()	
-					volunteers = Volunteer.objects.values()	# get querySet of events
+					volunteers = Volunteer.objects.values()	# get querySet of volunteers
 					context = {'volunteers': volunteers} 	
 					if(indx == len(lines) -1):
-							return render(request, 'volunteers.html', context)		# render events html
+							return render(request, 'volunteers.html', context)		# render volunteers html
 					# return render(request, 'volunteers.html', context)					
 				else:
 					return render(request, 'form_error.html')	# error page
@@ -104,25 +116,25 @@ def edit_volunteer(request):
 		return render(request, 'form_error.html')	# error page
 	else:
 		form_instance = Volunteer.objects.get(id=volunteer_id)
-		if request.method == "GET":		# render page to edit event
+		if request.method == "GET":		# render page to edit volunteer
 			form = VolunteerForm(instance=form_instance)
 			context = {'form': form}
 			return render(request, 'volunteers_edit.html',context)
-		elif request.method == "POST":	# edit event data
+		elif request.method == "POST":	# edit volunteer data
 			if(request.POST.get('delete', '') == ''):		# if not delete
 				print(request.POST.get('delete'))
 				form = VolunteerForm(request.POST, instance=form_instance)
 				if form.is_valid():
-					form.save()		# save new event data to form
-					volunteers = Volunteer.objects.values()	# get querySet of events
+					form.save()		# save new volunteer data to form
+					volunteers = Volunteer.objects.values()	# get querySet of volunteers
 					context = {'volunteers': volunteers} 	
-					return render(request, 'volunteers.html', context)		# render events html
+					return render(request, 'volunteers.html', context)		# render volunteers html
 				else:
 					return render(request, 'form_error.html')	# error page
 			else:	# if delete button was clicked
 				form_instance.delete()
-				volunteers = Volunteer.objects.values()	# get querySet of events
+				volunteers = Volunteer.objects.values()	# get querySet of volunteers
 				context = {'volunteers': volunteers} 	
-				return render(request, 'volunteers.html', context)		# render events html
+				return render(request, 'volunteers.html', context)		# render volunteers html
 
 

@@ -8,6 +8,7 @@ class VolunteerFilter (django_filters.FilterSet):
     birthday__lte = django_filters.NumberFilter(label = 'Was Born Before', field_name = 'birthday', lookup_expr = 'year__lte')
     birthday__gte = django_filters.NumberFilter(label = 'Was Born After', field_name = 'birthday', lookup_expr = 'year__gte')
     gender = django_filters.CharFilter(label = 'Is Of', field_name = 'gender', lookup_expr = 'exact')
+    name = django_filters.CharFilter(field_name='name', lookup_expr='contains')
 
     class Meta:
         model = Volunteer

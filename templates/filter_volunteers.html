@@ -1,0 +1,23 @@
+<!-- templates/filter_volunteers.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard -- Filter Volunteers{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1>
+          Hi, {{ user.username }}!
+        </h1>
+        <h2>
+          Filter list of volunteers based on the following criteria:
+        </h2>
+      </div>
+      
+    </div>
+  </section>
+	{% endif %}
+{% endblock %}
