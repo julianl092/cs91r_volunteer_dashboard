@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from events.filters import EventFilter
 from .models import Event
 from .forms import EventForm
 
@@ -13,13 +14,17 @@ def index(request):
 
 def filter_events(request):
 	if request.method == "GET":		# render page with form to filter events
+		event_list = Event.objects.all()
+		event_filter = EventFilter(request.GET, queryset=event_list)
 		context = {
-		
+			'filter': event_filter,
 		}
 		return render(request, 'filter_events.html', context)
 
 	elif request.method == "POST":	# return filtered events page
-		events = Event.objects.values()	# get querySet of events
+		event_list = Event.objects.all()
+		event_filter = EventFilter(request.POST, queryset=event_list)
+		events = event_filter.qs.values()	# get querySet of events
 		context = {
 			'events': events
 		} 	

@@ -1,0 +1,65 @@
+<!-- templates/filter_events.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard -- Filter Events{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+  <style>
+    .hero-body {
+      text-align: center;
+    }
+    * {
+      font-family: 'Didact Gothic', sans-serif;
+      color: black;
+    }
+    h1 {
+      margin: 10px;
+      padding: 10px; 
+      font-size: 48px; 
+      text-align: center;
+      font-weight: 900;
+    }
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 400;
+    }
+  </style>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1>
+          Hi, {{ user.username }}!
+        </h1>
+        <h2>
+          Filter list of events based on the following criteria:
+        </h2>
+      </div>
+      <h2>I want to search events where ... </h2>
+      <form method="post">
+        {% csrf_token %}
+        <p>{{filter.form.name}} is in the name</p>
+        <p>{{filter.form.description}} is in the description</p>
+        <p>{{filter.form.address}} is in the address</p>
+        <p>Event date is before the year {{filter.form.year__lte}}</p>
+        <p>Event date is after the year {{filter.form.year__gte}}</p>
+        <p>Event date is before the month {{filter.form.month__lte}}</p>
+        <p>Event date is after the month {{filter.form.month__gte}}</p>
+        <p>Event cost is less than {{filter.form.cost__lte}}</p>
+        <p>Event cost is greater than {{filter.form.cost__gte}}</p>
+        <br>
+        <button class = 'button is-dark is-large' type="submit">Filter</button>
+      </form>      
+    </div>
+    <!-- Footer of home page. -->
+    <div class="hero-foot is-light has-text-centered">
+      <a>
+        March 2019 <br>
+        Developed by Eric Lin, Julian Lee, and Isaac Robinson
+      </a>
+    </div>
+  </section>
+	{% endif %}
+{% endblock %}

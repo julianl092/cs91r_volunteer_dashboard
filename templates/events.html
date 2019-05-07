@@ -52,7 +52,7 @@
             </a>
             <a href="{% url 'add_event' %}">
               <button class="button is-success">
-                Add new event
+                Add new event +
               </button>
             </a>
         </div>
@@ -89,7 +89,7 @@
                     <td> {{event.address}} </td>
                     <td> {{event.time}} </td>
                     <td> 
-                        {% for v in event.volunteers.all%} 
+                        {% for v in event.volunteers.all %} 
                         <a href="{% url 'edit_volunteer' %}?id={{v.id}}">
                           {{v.name}}, 
                         </a> 
