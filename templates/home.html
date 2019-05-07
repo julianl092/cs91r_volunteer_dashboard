@@ -16,14 +16,16 @@
     h2 {
       text-align: center;
       font-size: 36px;
-      font-weight: 500;
+      font-weight: 700;
     }
     .card {
       border-style: solid; 
-      padding: 10px;
+      margin: 5px;
+      width: 49vw;
       font-size: 24px;
       border-width: 2px;
       margin-bottom: 10px;
+      text-align: center;
     }
     h1 {
       margin: 10px;
@@ -32,6 +34,16 @@
       text-align: center;
       font-weight: 700;
       background: none;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+    }
+    hr { 
+      padding: 0;
+      margin: 0;
+      background-color: black;
     }
 
     .container {
@@ -48,9 +60,9 @@
               WELCOME, {{ user.username }}!
             </h1>
         <div class = "display">
-          <div class = "sidebar">
             <h2>New Volunteers</h2>
             <hr>
+            <div class = "card-container">
             {% for volunteer in volunteers %}
               <div class="card">
                 <p style = "font-weight: 600; font-size: 32px;">{{volunteer.name}}</p>
@@ -59,12 +71,11 @@
                 <a class = "button is-dark is-rounded is-focused is-large" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Quick Follow Up</a>
                 <a class = "button is-link is-rounded is-focused is-large" href="{% url 'emails:customsend' volunteer.email volunteer.name %}">Custom Follow Up</a>
                 <script>
-                
                 // Update the count down every 1 second
                 var x = setInterval(
                   function() {
                     // Set the date we're counting down to
-                    var selected_year = {{ volunteer.date_joined.year}};
+                    var selected_year = {{volunteer.date_joined.year}};
                     var selected_month = {{ volunteer.date_joined.month}} + 2;
                     var selected_day = {{ volunteer.date_joined.day}} + 1;
                     var selected_hours = {{volunteer.date_joined.hour}};
@@ -96,9 +107,10 @@
                 </script>
               </div>
             {% endfor %}
-            </script>
+            </div>
             <h2>Top Events</h2>
             <hr>
+            <div class = "card-container">
             {% for event in events %}
               <div class = "card">
               <p><strong>{{event.name}}</strong></p>
@@ -106,6 +118,7 @@
               <p>{{event.time}}</p>
               </div>
             {% endfor %}
+          </div>
         </div>
             <div style = "margin: 0; padding: 0;" class = "chart-container">
                 <div class="pieChart" id ="pieChart" onclick="test('pieChart')">
