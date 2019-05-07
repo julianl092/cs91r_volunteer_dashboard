@@ -4,6 +4,7 @@ from .models import Volunteer
 from .forms import VolunteerForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
 def index(request):
 	if request.method == "GET":
 		volunteers = Volunteer.objects.values()
@@ -45,7 +46,8 @@ def add_volunteer(request):
 
 	elif request.method == "POST":	# save the form input as new volunteer in database
 		form = VolunteerForm(request.POST)
-		print(request.POST)
+		print("manual: ")
+		print(form)
 		if form.is_valid():
 			form.save()		# save new volunteer data to form
 			volunteers = Volunteer.objects.values()	# get querySet of volunteers
@@ -92,12 +94,15 @@ def upload_csv(request):
 			data_dict["date_joined"] = fields[5]
 			data_dict["initial-date_joined"] = fields[5]
 			data_dict["num_hours"] = fields[6]
-			data_dict["num_volunteers"] = fields[7]
+			data_dict["num_events"] = fields[7]
 			# print("data:")
 			# print(data_dict)
 			try:
 				form = VolunteerForm(data_dict)
+				print("csv:")
+				print(form)
 				if form.is_valid():
+					print("valid form")
 					form.save()	
 					volunteers = Volunteer.objects.values()	# get querySet of volunteers
 					context = {'volunteers': volunteers} 	
@@ -105,17 +110,18 @@ def upload_csv(request):
 							return render(request, 'volunteers.html', context)		# render volunteers html
 					# return render(request, 'volunteers.html', context)					
 				else:
-					return render(request, 'form_error.html')	# error page
+					messages.info(request, "Some invalid data was detected and not added")
+					
 			except Exception as e:
 				print("error")			
 				print(e)		
 				pass
-				return render(request, 'form_error.html')	# error page
+				#return render(request, 'form_error.html')	# error page
 
 	except Exception as e:
 		print("error")			
 		print(e)
-		return render(request, 'form_error.html')	# error page		
+		#return render(request, 'form_error.html')	# error page		
 	
 	return HttpResponseRedirect(reverse("upload_csv"))
 

@@ -14,17 +14,20 @@ def home(request):
 		name = volunteer['name']
 		address = volunteer['address']
 		geolocator = Nominatim()
-		location = geolocator.geocode(address)
-		latitude, longitude = map(float, (location.latitude, location.longitude))
-		features.append(
-			Feature(
-				geometry = Point((longitude, latitude)),
-				properties = {
-					'name': name,
-				}
+		try:
+			location = geolocator.geocode(address)
+			latitude, longitude = map(float, (location.latitude, location.longitude))
+			features.append(
+				Feature(
+					geometry = Point((longitude, latitude)),
+					properties = {
+						'name': name,
+					}
+				)
 			)
-		)
-
+		except:
+			print(geolocator.geocode(address))
+		
 	evs = Event.objects.all()
 	for event in evs.values():
 		name = event['name']
@@ -41,6 +44,7 @@ def home(request):
 					}
 				)
 			)
+
 
 	# Write to json
 	collection = FeatureCollection(features)
