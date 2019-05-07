@@ -7,13 +7,27 @@
 	{% if user.is_authenticated %}
 
     <!-- Body of home page. -->
-    <section class="section">
+    <style> 
+    h1 {
+  margin: 10px;
+  padding: 10px; 
+  font-size: 48px; 
+  text-align: center;
+  font-weight: 900;
+}
+h2 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+}
+    </style>
+    <section class="hero">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title">
-            Hi {{ user.username }}!
+          <h1>
+            Hi, {{ user.username }}!
           </h1>
-          <h2 class="subtitle">
+          <h2>
             This is the events page. View, add, and edit events.
           </h2>
         </div>

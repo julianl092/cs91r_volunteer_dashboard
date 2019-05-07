@@ -2,18 +2,38 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard -- Volunteers{% endblock %}
 {% block content %}
-	{% if user.is_authenticated %}
+  {% if user.is_authenticated %}
+    <style>
+      .hero-body {
+        text-align: center;
+      }
+      * {
+        font-family: 'Didact Gothic', sans-serif;
+        color: black;
+      }
+
+h1 {
+  margin: 10px;
+  padding: 10px; 
+  font-size: 48px; 
+  text-align: center;
+  font-weight: 900;
+}
+h2 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+}
+    </style>
     <!-- Body of home page. -->
-    <section class="section">
+    <section class="hero">
       <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title">
-            Hi {{ user.username }}!
-          </h1>
-          <h2 class="subtitle">
-            Volunteers page. View, add, and edit volunteers.
-          </h2>
-        </div>
+            <h1>
+              Hi, {{ user.username }}!
+            </h1>
+            <h2>
+              Volunteers page. View, add, and edit volunteers.
+            </h2>
         <!-- Add new event -->
         <div class="container has-text-centered">
             <a href="{% url 'add_volunteer' %}">
@@ -40,19 +60,6 @@
                   <th> <abbr title="Number of events attended"> </abbr> # Events </th>
                 </tr>
               </thead>
-              <!-- Column names at the bottom. -->
-              <tfoot>
-                <tr>
-                  <th> Name </th>
-                  <th> Address </th>
-                  <th> Birthday </th>
-                  <th> Gender </th>
-                  <th> Email </th>
-                  <th> Date Joined </th>
-                  <th> <abbr title="Total hours volunteered"> # Hrs </abbr> </th>
-                  <th> <abbr title="Number of events attended"> </abbr> # Events </th>
-                </tr>
-              </tfoot>
               <!-- Events data. -->
               <tbody>
                 {% for volunteer in volunteers %}

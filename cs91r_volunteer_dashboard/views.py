@@ -46,7 +46,7 @@ def home(request):
 	collection = FeatureCollection(features)
 	with open("static/js/data.geojson", "w+") as f:
 		f.write('%s' % collection)
-	return render (request, 'home.html', context = {"volunteers": vols[:4], "events": evs[:4]})
+	return render (request, 'home.html', context = {"volunteers": vols[:4], "events": evs[:2]})
 
 def analytics(request):
 	vols = Volunteer.objects.all()

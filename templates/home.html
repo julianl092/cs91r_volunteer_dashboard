@@ -33,6 +33,7 @@
       padding: 10px; 
       font-size: 48px; 
       text-align: center;
+      font-weight: 700;
     }
 
     .container {
@@ -44,8 +45,8 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
   <section>
       <!-- Body of home page. -->
-            <h1>
-              WELCOME, <strong>{{ user.username }}</strong>!
+            <h1 style = "padding-top: 70px;">
+              WELCOME, {{ user.username }}!
             </h1>
         <div class = "display">
           <div class = "sidebar">
@@ -107,8 +108,7 @@
               </div>
             {% endfor %}
         </div>
-          <!-- <div class = 'graphics'> -->
-            <div class = "chart-container">
+            <div style = "margin: 0; padding: 0;" class = "chart-container">
                 <div class="pieChart" id ="pieChart" onclick="test('pieChart')">
                   <canvas id="myPieChart"></canvas>
                 </div>
