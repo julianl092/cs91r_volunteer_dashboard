@@ -12,6 +12,6 @@ class VolunteerFilter (django_filters.FilterSet):
 
     class Meta:
         model = Volunteer
-        fields = ['num_events', 'num_hours', 'year_joined__lte', 'year_joined__gte', 'birthday__lte', 'birthday__gte', 'gender']
+        fields = ['num_events', 'num_hours', 'year_joined__lte', 'year_joined__gte', 'birthday__lte', 'birthday__gte', 'gender', 'name']
 
 

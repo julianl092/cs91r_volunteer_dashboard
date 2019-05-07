@@ -5,6 +5,27 @@
 
 {% block content %}
 	{% if user.is_authenticated %}
+  <style>
+    .hero-body {
+      text-align: center;
+    }
+    * {
+      font-family: 'Didact Gothic', sans-serif;
+      color: black;
+    }
+    h1 {
+      margin: 10px;
+      padding: 10px; 
+      font-size: 48px; 
+      text-align: center;
+      font-weight: 900;
+    }
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 400;
+    }
+  </style>
 
   <section class="hero">
     <div class="hero-body">
@@ -16,7 +37,19 @@
           Filter list of volunteers based on the following criteria:
         </h2>
       </div>
-      
+      <h2>I want to get in touch with everyone who ... </h2>
+      <form method="post">
+        {% csrf_token %}
+        <p>Has worked at at least {{ filter.form.num_events }} events</p>
+        <p>Has worked for at least {{ filter.form.num_hours }} hours</p>
+        <p>Joined before the year {{ filter.form.year_joined__lte }}</p>
+        <p>Joined after the year {{ filter.form.year_joined__gte }}</p>
+        <p>Was born before the year {{ filter.form.birthday__lte }}</p>
+        <p>Was born after the year {{ filter.form.birthday__gte }}</p>
+        <p>Identifies as {{filter.form.gender}} gender</p>
+        <p>Whose name is {{filter.form.name}}</p>
+        <button class = 'button is-dark is-large' type="submit">Filter</button>
+      </form>      
     </div>
   </section>
 	{% endif %}

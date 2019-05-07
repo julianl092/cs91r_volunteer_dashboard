@@ -16,7 +16,7 @@ def index(request):
 		print("POST request volunteer")
 
 def filter_volunteers(request):
-	if request.method == "GET":		# render page with form to filter volunteers
+	if request.method == "GET":		# render page with form to filter volunteers and redirect to filtered volunteers
 		user_list = Volunteer.objects.all()
 		user_filter = VolunteerFilter(request.GET, queryset=user_list)
 		context = {
@@ -24,7 +24,16 @@ def filter_volunteers(request):
 		}
 		return render(request, 'filter_volunteers.html', context)
 	elif request.method == "POST":	# render filtered volunteer page
-		print("POST")
+		user_list = Volunteer.objects.all()
+		user_filter = VolunteerFilter(request.POST, queryset=user_list)
+		context = {
+			'filter': user_filter,
+		}
+		volunteers = user_filter.qs.values()
+		context = {
+			'volunteers': volunteers,
+		}
+		return render(request, 'volunteers.html', context)
 
 def add_volunteer(request):
 	if request.method == "GET":		# render page with form to add new volunteer
