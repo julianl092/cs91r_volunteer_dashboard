@@ -1,0 +1,71 @@
+<!-- templates/volunteer_report.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard -- Add Volunteer Report{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+  
+
+    <!-- Body of home page. -->
+    <section class="section">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <h1 class="title">
+                Hi {{ user.username }}!
+              </h1>
+              <h2 class="subtitle">
+                Add a new volunteer report.
+              </h2>
+            </div>
+          </div>
+          <div class="column is-6 is-offset-3">
+            <form method="post">
+              {% csrf_token %}
+              <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                  {{ form.as_p }}
+                </div>
+              </div>
+              <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                  <button type="submit" class="button is-success">Add report</button>
+                </div>
+              </div>
+            </form>  
+            <div class="field is-grouped-centered">
+                <a href="{% url 'volunteers' %}"> Back to Volunteers Page </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer of home page. -->
+      <div class="hero-foot is-light has-text-centered">
+        <a>
+          March 2019 <br>
+          Developed by Eric Lin, Julian Lee, and Isaac Robinson
+        </a>
+      </div>
+    </section>
+	<!-- If user not logged in. -->
+	{% else %}
+		<section class="hero is-info is-bold is-fullheight">
+			<div class="hero-body">
+			    <div class="container has-text-centered">
+            <h1 class="title">
+					  Volunteer Dashboard
+					</h1>
+					<br>
+					<h2 class="subtitle">
+						You are not logged in. <br>
+						<a href="{% url 'login' %}">login</a> |
+						<a href="{% url 'signup' %}">signup</a>
+					</h2>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+
+{% endblock %}

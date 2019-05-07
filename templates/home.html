@@ -57,6 +57,72 @@
   <section>
       <!-- Body of home page. -->
         <div class = "display">
+<<<<<<< HEAD
+=======
+            <h2>New Volunteers</h2>
+            <hr>
+            <div class = "card-container">
+            {% for volunteer in volunteers reversed %}
+              <div class="card">
+                <a href="{% url 'edit_volunteer' %}?id={{volunteer.id}}" style = "font-weight: 600; font-size: 32px;"> 
+                  {{volunteer.name}} 
+                </a>
+                <p>Registered {{volunteer.date_joined}}</p>
+                <p>Follow Up Countdown: <h3 style = "font-weight: 600; color: hsl(217, 71%, 53%)" id = "{{volunteer.name}}"></h3></p> 
+                <a class = "button is-success is-rounded is-focused" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Quick Follow Up</a>
+                <a class = "button is-link is-rounded is-focused" href="{% url 'emails:customsend' volunteer.email volunteer.name %}">Custom Follow Up</a>
+                <script>
+                // Update the count down every 1 second
+                var x = setInterval(
+                  function() {
+                    // Set the date we're counting down to
+                    var selected_year = {{volunteer.date_joined.year}};
+                    var selected_month = {{ volunteer.date_joined.month}} + 2;
+                    var selected_day = {{ volunteer.date_joined.day}} + 1;
+                    var selected_hours = {{volunteer.date_joined.hour}};
+                    var selected_minutes = {{volunteer.date_joined.minute}};
+                    var selected_seconds = {{volunteer.date_joined.second}};
+                    var countDownDate = new Date(selected_year, selected_month, selected_day, selected_hours, selected_minutes, selected_seconds).getTime();
+                    // Get todays date and time
+                    var now = new Date().getTime();
+      
+                    // Find the distance between now and the count down date
+                    var distance = countDownDate - now;
+      
+                    // Time calculations for days, hours, minutes and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    // Display the result in the element with id="demo"
+                    document.getElementById("{{volunteer.name}}").innerHTML = hours + " hours, "
+                    + minutes + " minutes, " + seconds + " seconds";
+      
+                    // If the count down is finished, write some text 
+                    if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("{{volunteer.name}}").innerHTML = "EXPIRED";
+                    }
+                  }, 1000
+                );
+                </script>
+              </div>
+            {% endfor %}
+            </div>
+            <h2>Recent Events</h2>
+            <hr>
+            <div class = "card-container">
+            {% for event in events reversed %}
+              <div class = "card">
+              <a href="{% url 'edit_event' %}?id={{event.id}}"> <strong> {{event.name}} </strong> </a>
+              <p>Registered Volunteers: {% for v in event.volunteers.all%} <a href="{% url 'edit_volunteer' %}?id={{v.id}}">{{v.name}}, </a>{% endfor %}</p>
+              <p>{{event.address}}</p>
+              <p>{{event.time}}</p>
+              <a class = "button is-link is-rounded is-focused" href="{% url 'emails:remind' event.id %}">Send Reminder</a>
+              </div>
+            {% endfor %}
+          </div>
+>>>>>>> 6d225d9c03d7f57e6e9a480c369afabb92ed2888
         </div>
             <div style = "margin: 0; padding: 0;" class = "chart-container">
          
