@@ -4,7 +4,7 @@ from .forms import EventForm
 
 def index(request):
 	if request.method == "GET":
-		events = Event.objects.values()	# get querySet of events
+		events = Event.objects.all()	# get querySet of events
 		context = {'events': events} 	
 		return render(request, 'events.html', context)		# render events html
 
@@ -37,7 +37,7 @@ def add_event(request):
 		form = EventForm(request.POST)
 		if form.is_valid():
 			form.save()		# save new event data to form
-			events = Event.objects.values()	# get querySet of events
+			events = Event.objects.all()	# get querySet of events
 			context = {'events': events} 	
 			return render(request, 'events.html', context)		# render events html
 		else:
@@ -58,13 +58,13 @@ def edit_event(request):
 				form = EventForm(request.POST, instance=form_instance)
 				if form.is_valid():
 					form.save()		# save new event data to form
-					events = Event.objects.values()	# get querySet of events
+					events = Event.objects.all()	# get querySet of events
 					context = {'events': events} 	
 					return render(request, 'events.html', context)		# render events html
 				else:
 					return render(request, 'form_error.html')	# error page
 			else:	# if delete button was clicked
 				form_instance.delete()
-				events = Event.objects.values()	# get querySet of events
+				events = Event.objects.all()	# get querySet of events
 				context = {'events': events} 	
 				return render(request, 'events.html', context)		# render events html

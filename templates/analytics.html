@@ -40,7 +40,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-  <section>
+  <section class = "hero">
+    <div class = "hero-body">
       <!-- Body of home page. -->
             <h1>
               WELCOME, <strong>{{ user.username }}</strong>!
@@ -118,7 +119,8 @@
       <script src="{% static 'js/barChart.js' %}"> </script>    
       <script src="{% static 'js/map.js' %}"> </script>   
       <script type="text/javascript" src="http://d3js.org/topojson.v3.min.js"></script>
-      <script src="{% static 'js/script2.js' %}"> </script>       
+      <script src="{% static 'js/script2.js' %}"> </script>     
+    </div>  
     </section>
 	<!-- If user not logged in. -->
 	{% else %}

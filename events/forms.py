@@ -8,6 +8,7 @@ class EventForm(forms.ModelForm):
 	volunteers = forms.ModelMultipleChoiceField(
 					queryset=Volunteer.objects.all(),
 					required=False,
+					widget = forms.CheckboxSelectMultiple,
 				)
 
 	class Meta:
@@ -17,6 +18,6 @@ class EventForm(forms.ModelForm):
 			'description',
 			'address',
 			'time',
-			'volunteers',
 			'cost',
+			'volunteers',
 		)

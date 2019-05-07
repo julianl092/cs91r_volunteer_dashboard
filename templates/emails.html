@@ -41,7 +41,7 @@
                   <p>Was born after the year {{ filter.form.birthday__gte }}</p>
                   <p>Identifies as {{filter.form.gender}} gender</p>
                   <p>Whose name is {{filter.form.name}}</p>
-                  <button class = 'button is-dark is-large' type="submit">Filter</button>
+                  <button class = 'button is-success is-large' type="submit">Filter</button>
                 </form>
           </div>
           <div class = "column">
@@ -55,7 +55,7 @@
         <form method = "post"> 
             {% csrf_token %}
             {{form.as_p}}
-            <button class = 'button is-dark is-large' type = "submit">Send Email</button>
+            <button class = 'button is-link is-large' type = "submit">Send Email</button>
         </form>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">
