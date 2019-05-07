@@ -65,7 +65,9 @@
             <div class = "card-container">
             {% for volunteer in volunteers %}
               <div class="card">
-                <p style = "font-weight: 600; font-size: 32px;">{{volunteer.name}}</p>
+                <a href="{% url 'edit_volunteer' %}?id={{volunteer.id}}" style = "font-weight: 600; font-size: 32px;"> 
+                  {{volunteer.name}} 
+                </a>
                 <p>Registered {{volunteer.date_joined}}</p>
                 <p>Follow Up Countdown: <h3 style = "font-weight: 600; color: hsl(217, 71%, 53%)" id = "{{volunteer.name}}"></h3></p> 
                 <a class = "button is-dark is-rounded is-focused is-large" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Quick Follow Up</a>
@@ -113,7 +115,7 @@
             <div class = "card-container">
             {% for event in events %}
               <div class = "card">
-              <p><strong>{{event.name}}</strong></p>
+              <a href="{% url 'edit_event' %}?id={{event.id}}"> <strong> {{event.name}} </strong> </a>
               <p>{{event.address}}</p>
               <p>{{event.time}}</p>
               </div>
