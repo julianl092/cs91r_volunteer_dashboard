@@ -24,6 +24,17 @@ h2 {
   font-size: 36px;
   font-weight: 400;
 }
+
+table {
+        width: 80%;
+        height: 70vh;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 15px; 
+      }      
+      td, th { 
+        font-size: 24px;
+      }
     </style>
     <!-- Body of home page. -->
     <section class="hero">
@@ -49,8 +60,6 @@ h2 {
             </a>
         </div>
         <!-- Table to display events. -->
-        <div class="container has-text-centered">
-          <div class="column is-6 is-offset-3">
             <table class="table">
               <!-- Column names at the top. -->
               <thead>
@@ -81,8 +90,6 @@ h2 {
                 {% endfor %}
               </tbody>
             </table>
-          </div>
-        </div>
       </div>
       <!-- Footer of home page. -->
       <div class="hero-foot is-light has-text-centered">

@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     path('quick/<str:email>/<str:name>/', views.quicksend, name='quicksend'),
     path('custom/<str:email>/<str:name>/', views.customsend, name='customsend'),
+    path('remind/<int:id>/', views.remind, name ='remind')
 ]

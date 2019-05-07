@@ -70,8 +70,8 @@
                 </a>
                 <p>Registered {{volunteer.date_joined}}</p>
                 <p>Follow Up Countdown: <h3 style = "font-weight: 600; color: hsl(217, 71%, 53%)" id = "{{volunteer.name}}"></h3></p> 
-                <a class = "button is-success is-rounded is-focused is-large" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Quick Follow Up</a>
-                <a class = "button is-link is-rounded is-focused is-large" href="{% url 'emails:customsend' volunteer.email volunteer.name %}">Custom Follow Up</a>
+                <a class = "button is-success is-rounded is-focused" href="{% url 'emails:quicksend' volunteer.email volunteer.name %}">Quick Follow Up</a>
+                <a class = "button is-link is-rounded is-focused" href="{% url 'emails:customsend' volunteer.email volunteer.name %}">Custom Follow Up</a>
                 <script>
                 // Update the count down every 1 second
                 var x = setInterval(
@@ -119,6 +119,7 @@
               <p>Registered Volunteers: {% for v in event.volunteers.all%} <a href="{% url 'edit_volunteer' %}?id={{v.id}}">{{v.name}}, </a>{% endfor %}</p>
               <p>{{event.address}}</p>
               <p>{{event.time}}</p>
+              <a class = "button is-link is-rounded is-focused" href="{% url 'emails:remind' event.id %}">Send Reminder</a>
               </div>
             {% endfor %}
           </div>
