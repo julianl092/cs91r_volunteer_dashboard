@@ -4,6 +4,7 @@ from events.models import Event
 from geopy.geocoders import Nominatim
 import csv, json
 import string
+from datetime import datetime
 from geojson import Feature, FeatureCollection, Point
 
 def home(request): 
@@ -55,6 +56,27 @@ def home(request):
 def analytics(request):
 	vols = Volunteer.objects.all()
 	evs = Event.objects.all()
+	vols_ages = []
+	# Current time
+	today = datetime.today()
+	curr_year = today.year 
+	curr_month = today.month 
+	curr_day = today.day 
+	for vol in vols.values():
+		vol_year = vol['birthday'].year
+		vol_month = vol['birthday'].month
+		vol_day = vol['birthday'].day
+		age = curr_year - vol_year
+		if curr_month < vol_month:
+			age -= 1
+		elif curr_month == vol_month and curr_day < vol_day:
+			age -= 1
+		vols_ages.append(age)
+	
+	# Write to json
+	with open("static/js/ages.json", "w+") as f:
+		json.dump(vols_ages, f)
+
 	context = {
 		'volunteers': vols,
 		'events': evs,
